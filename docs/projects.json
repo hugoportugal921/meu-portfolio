@@ -1,0 +1,74 @@
+[
+  {
+    "slug": "consolidacao-dados",
+    "number": "01",
+    "category": "AUTOMAÇÃO OPERACIONAL",
+    "title": "Do dado bruto ao relatório",
+    "description": "Importação e consolidação de CSV com validação, deduplicação e relatórios analíticos processados em segundo plano.",
+    "tags": [
+      "Consolidação",
+      "Web Workers",
+      "CSV"
+    ],
+    "preview": "operations",
+    "icon": "layers",
+    "navigationTitle": "Dados & automação",
+    "demoURL": "https://consolidacao-dados-hp-1101.fondmars66.chatgpt.site",
+    "downloadURL": null,
+    "repositoryVisibility": "private"
+  },
+  {
+    "slug": "dashboard-operacional",
+    "number": "02",
+    "category": "BUSINESS INTELLIGENCE",
+    "title": "O pulso da operação",
+    "description": "Indicadores estratégicos e operacionais com filtros interativos, gráficos e atualização contínua simulada.",
+    "tags": [
+      "Dashboards",
+      "Indicadores",
+      "Visualização"
+    ],
+    "preview": "dashboard",
+    "icon": "chart",
+    "navigationTitle": "Dashboard operacional",
+    "demoURL": "https://dashboard-operacional-hp-1101.fondmars66.chatgpt.site",
+    "downloadURL": null,
+    "repositoryVisibility": "private"
+  },
+  {
+    "slug": "video-analitico",
+    "number": "03",
+    "category": "VISÃO COMPUTACIONAL",
+    "title": "O movimento vira um evento",
+    "description": "Comparação real de imagens para detectar movimento em uma região definida, usando cena de exemplo, câmera ou vídeo local.",
+    "tags": [
+      "Computer Vision",
+      "Vídeo",
+      "Monitoramento"
+    ],
+    "preview": "vision",
+    "icon": "scan",
+    "navigationTitle": "Vídeo analítico",
+    "demoURL": "https://video-analitico-hp-1101.fondmars66.chatgpt.site",
+    "downloadURL": null,
+    "repositoryVisibility": "private"
+  },
+  {
+    "slug": "laboratorio-sql",
+    "number": "04",
+    "category": "ENGENHARIA DE DADOS",
+    "title": "Dados sob consulta",
+    "description": "Modelagem relacional e consultas SQL executáveis com JOIN, agregações, CTE e funções de janela em SQLite.",
+    "tags": [
+      "SQL",
+      "Modelagem",
+      "Análise de dados"
+    ],
+    "preview": "sql",
+    "icon": "database",
+    "navigationTitle": "Laboratório SQL",
+    "demoURL": "https://laboratorio-sql-hp-1101.fondmars66.chatgpt.site",
+    "downloadURL": null,
+    "repositoryVisibility": "private"
+  }
+]
