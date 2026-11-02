@@ -13,7 +13,7 @@
     "preview": "operations",
     "icon": "layers",
     "navigationTitle": "Dados & automação",
-    "demoURL": "https://consolidacao-dados-hp-1101.fondmars66.chatgpt.site",
+    "demoURL": "./projetos/consolidacao-dados/",
     "downloadURL": null,
     "repositoryVisibility": "private"
   },
@@ -31,7 +31,7 @@
     "preview": "dashboard",
     "icon": "chart",
     "navigationTitle": "Dashboard operacional",
-    "demoURL": "https://dashboard-operacional-hp-1101.fondmars66.chatgpt.site",
+    "demoURL": "./projetos/dashboard-operacional/",
     "downloadURL": null,
     "repositoryVisibility": "private"
   },
@@ -49,7 +49,7 @@
     "preview": "vision",
     "icon": "scan",
     "navigationTitle": "Vídeo analítico",
-    "demoURL": "https://video-analitico-hp-1101.fondmars66.chatgpt.site",
+    "demoURL": "./projetos/video-analitico/",
     "downloadURL": null,
     "repositoryVisibility": "private"
   },
@@ -67,7 +67,7 @@
     "preview": "sql",
     "icon": "database",
     "navigationTitle": "Laboratório SQL",
-    "demoURL": "https://laboratorio-sql-hp-1101.fondmars66.chatgpt.site",
+    "demoURL": "./projetos/laboratorio-sql/",
     "downloadURL": null,
     "repositoryVisibility": "private"
   }

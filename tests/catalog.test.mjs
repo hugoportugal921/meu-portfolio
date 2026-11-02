@@ -13,7 +13,7 @@ test('catálogo contém os quatro projetos independentes com destinos e download
   assert.deepEqual(Object.keys(repositories).sort(),projects.map(project=>project.slug).sort());
   for(const project of projects){
     assert.match(project.slug,/^[a-z][a-z-]+$/);
-    assert.equal(new URL(project.demoURL).protocol,'https:');
+    assert.equal(new URL(project.demoURL,'https://hugoportugal921.github.io/meu-portfolio/').protocol,'https:');
     assert.ok(project.downloadURL === null || project.downloadURL === `./downloads/${project.slug}.zip`);
     assert.equal(project.repositoryVisibility,'private');
     assert.equal(project.downloadURL,null);

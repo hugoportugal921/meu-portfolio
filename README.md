@@ -1,45 +1,38 @@
 # Eng. Hugo Portugal — Portfólio profissional
 
-Apresentação de Hugo Portugal Vasconcelos, engenheiro metalúrgico com especialização em Engenharia de Software e Sistemas, com foco em indústria, planejamento, qualidade, tecnologia e inteligência de dados.
-
 [Acessar o portfólio](https://hugoportugal921.github.io/meu-portfolio/)
 
-## Conteúdo
+Apresentação de Hugo Portugal Vasconcelos, engenheiro metalúrgico com especialização em Engenharia de Software e Sistemas.
 
-- Página inicial com apresentação profissional e catálogo de quatro projetos.
-- Página de perfil com formação, experiência, competências e abordagem de trabalho.
-- Links para demonstrações independentes e repositórios privados dos projetos.
+## Páginas e demonstrações
 
-Este repositório contém somente o site de apresentação. Os quatro projetos continuam em repositórios privados separados. As demonstrações são hospedadas separadamente e o catálogo não oferece pacotes públicos do código dos projetos.
+- Perfil profissional: perfil.html
+- Consolidação de dados: projetos/consolidacao-dados/
+- Dashboard operacional: projetos/dashboard-operacional/
+- Vídeo analítico: projetos/video-analitico/
+- Laboratório SQL: projetos/laboratorio-sql/
+
+A apresentação e as quatro demonstrações funcionam no mesmo endereço do GitHub Pages, sem autenticação. O site publica os arquivos estáticos (HTML, CSS, JavaScript, fontes e WebAssembly) necessários à execução no navegador. Os quatro repositórios originais dos projetos permanecem privados.
 
 ## Executar localmente
 
-Requer Node.js 20 ou mais recente. Não há pacotes a instalar.
+Requer Node.js 20 ou mais recente. Não há dependências a instalar.
 
 ```sh
 node serve.mjs
-```
-
-Abra http://127.0.0.1:4173. No Windows, também é possível abrir iniciar.cmd.
-
-## Publicação
-
-O GitHub Pages serve a pasta docs da branch main. Os arquivos usam caminhos relativos para funcionar em /meu-portfolio/. A pasta docs inclui .nojekyll.
-
-## Atualizar o conteúdo
-
-- docs/index.html: apresentação inicial e ordem do menu.
-- docs/perfil.html: perfil profissional.
-- docs/projects.json: cartões e endereços das demonstrações.
-- docs/repositories.json: links dos repositórios dos projetos.
-- docs/profile.css e docs/catalog.css: estilos da apresentação.
-
-## Verificações
-
-```sh
 node --test
 ```
 
+Abra http://127.0.0.1:4173. No Windows, iniciar.cmd também inicia o servidor.
+
+## Publicação
+
+GitHub Pages serve docs da branch main. Todos os links da aplicação são relativos e compatíveis com /meu-portfolio/. Os links externos de código apontam para GitHub. docs/.nojekyll desativa processamento Jekyll.
+
+## Dados e recursos
+
+As demonstrações usam dados fictícios e processam os dados localmente. Relatórios e SQLite são executados em Workers. O vídeo analítico compara quadros; a cena de exemplo funciona sem câmera. Usar câmera depende da permissão do visitante para o domínio atual.
+
 ## Créditos
 
-Fontes DM Sans e Manrope distribuídas sob suas licenças OFL, incluídas em docs/fonts/. Os dados das demonstrações são fictícios.
+Fontes DM Sans e Manrope: licenças OFL incluídas em fonts/. O laboratório SQL inclui sql.js e sua licença no diretório vendor/.
