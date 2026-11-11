@@ -1,5 +1,5 @@
 import './shell.js';
-import { renderProject } from './catalog.js?v=tres-projetos-20261111';
+import { renderProject } from './catalog.js?v=editorial-20261111';
 try {
   const responses = await Promise.all([fetch('./projects.json',{cache:'no-store'}),fetch('./repositories.json',{cache:'no-store'})]);
   if(responses.some(response=>!response.ok))throw new Error('Não foi possível carregar o catálogo.');
