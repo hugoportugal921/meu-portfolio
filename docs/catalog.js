@@ -13,10 +13,13 @@ function preview(type) {
 }
 
 export function renderProject(project, repositories) {
-  const source = repositoryURL(repositories?.[project.slug]);
+  const demos = project.demos ?? [{label:'Abrir demonstração',url:project.demoURL,repositoryKey:project.slug}];
+  const sources = demos.map(item=>({url:repositoryURL(repositories?.[item.repositoryKey]),label:item.label})).filter(item=>item.url);
   const title = escapeHTML(project.title);
   const demo = escapeHTML(project.demoURL);
   const download = typeof project.downloadURL === 'string' && project.downloadURL.trim() ? escapeHTML(project.downloadURL) : null;
   const sourceLabel = project.repositoryVisibility === 'private' ? 'GitHub privado ↗' : 'GitHub ↗';
-  return `<article class="project-card" id="${escapeHTML(project.slug)}"><a href="${demo}" aria-label="Abrir demonstração: ${title}">${preview(project.preview)}</a><div class="project-body"><div class="project-kicker"><span>${escapeHTML(project.number)} / ${escapeHTML(project.category)}</span><span class="project-arrow" aria-hidden="true">↗</span></div><h3>${title}</h3><p>${escapeHTML(project.description)}</p><div class="tag-list">${project.tags.map(tag=>`<span>${escapeHTML(tag)}</span>`).join('')}</div><div class="project-actions"><a class="button primary" href="${demo}">Ver projeto ↗</a>${download?`<a class="button ghost" href="${download}" download>Baixar código ↓</a>`:''}${source?`<a class="button ghost source-link" href="${escapeHTML(source)}" target="_blank" rel="noopener noreferrer">${sourceLabel}</a>`:''}</div></div></article>`;
+  const demoActions=demos.length>1?demos.map(item=>`<a class="button ghost" href="${escapeHTML(item.url)}">${escapeHTML(item.label)} ↗</a>`).join(''):'';
+  const sourceActions=sources.map((item,index)=>`<a class="button ghost source-link" href="${escapeHTML(item.url)}" target="_blank" rel="noopener noreferrer">${sources.length>1?escapeHTML(index===0?'GitHub do dashboard ↗':'GitHub do SQL ↗'):sourceLabel}</a>`).join('');
+  return `<article class="project-card${demos.length>1?' project-card--wide':''}" id="${escapeHTML(project.slug)}"><a href="${demo}" aria-label="Abrir demonstração: ${title}">${preview(project.preview)}</a><div class="project-body"><div class="project-kicker"><span>PROJETO ${escapeHTML(project.number)} / ${escapeHTML(project.category)}</span><span class="project-arrow" aria-hidden="true">↗</span></div><h3>${title}</h3><p class="project-scope"><span class="scope-label">ESCOPO DO PROJETO</span>${escapeHTML(project.description)}</p><div class="tag-list">${project.tags.map(tag=>`<span>${escapeHTML(tag)}</span>`).join('')}</div>${project.demoNote?`<p class="project-demo-note">${escapeHTML(project.demoNote)}</p>`:''}<div class="project-actions"><a class="button primary" href="${demo}">Ver projeto ↗</a>${demoActions}${download?`<a class="button ghost" href="${download}" download>Baixar código ↓</a>`:''}${sourceActions}</div></div></article>`;
 }

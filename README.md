@@ -4,6 +4,14 @@
 
 Apresentação de Hugo Portugal Vasconcelos, engenheiro metalúrgico com especialização em Engenharia de Software e Sistemas.
 
+## Organização em três projetos
+
+1. Plataforma de Automação Operacional e Relatórios Assíncronos.
+2. Sistema de Visão Computacional para Monitoramento de Conformidade.
+3. Ecossistema de Dados e Monitoramento Gerencial em Tempo Real — reúne dashboard e SQL na página ecossistema.html.
+
+As descrições apresentam o escopo dos projetos; cada cartão identifica o que pode ser testado nas demonstrações estáticas. São três projetos apresentados e quatro demonstrações preservadas.
+
 ## Páginas e demonstrações
 
 - Perfil profissional: perfil.html

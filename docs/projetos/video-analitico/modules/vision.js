@@ -47,7 +47,7 @@ export function mount(container, store) {
   container.innerHTML = `
     <style>.vision-roi-controls{border:0;padding:0;margin:0 0 20px}.vision-roi-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.vision-roi-grid input{width:100%;padding:10px 12px;border:1px solid var(--border,#dfe5ef);border-radius:5px;background:#fafbfd;color:var(--text,#19202f)}@media(max-width:540px){.vision-roi-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}</style>
     <div class="page-intro">
-      <span class="eyebrow">PROJETO 03 · VISÃO COMPUTACIONAL</span>
+      <span class="eyebrow">PROJETO 02 · VISÃO COMPUTACIONAL</span>
       <h1 class="section-title">O movimento vira um evento.</h1>
       <p class="muted">Compare imagens consecutivas e acompanhe movimento dentro de uma área restrita. Use a cena de exemplo, uma câmera ou um vídeo do seu computador.</p>
     </div>

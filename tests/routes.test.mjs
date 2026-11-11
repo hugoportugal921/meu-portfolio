@@ -36,9 +36,9 @@ test('links e recursos locais permanecem no subdiretório publicado e existem no
 
 test('as quatro demonstrações retornam ao portfólio e preservam os recursos dos Workers', async () => {
   const projects = JSON.parse(await readFile(new URL('projects.json', root), 'utf8'));
-  for (const project of projects) {
-    const demo = new URL(project.demoURL, publicRoot);
-    const directory = new URL(`projetos/${project.slug}/`, root);
+  for (const project of projects.flatMap(project=>project.demos)) {
+    const demo = new URL(project.url, publicRoot);
+    const directory = new URL(project.url, root);
     const config = (await import(new URL('project-config.js', directory))).default;
     assert.equal(new URL(config.portfolioURL, demo).href, publicRoot.href);
     await access(new URL(config.moduleURL, directory));

@@ -3,71 +3,82 @@
     "slug": "consolidacao-dados",
     "number": "01",
     "category": "AUTOMAÇÃO OPERACIONAL",
-    "title": "Do dado bruto ao relatório",
-    "description": "Importação e consolidação de CSV com validação, deduplicação e relatórios analíticos processados em segundo plano.",
+    "title": "Plataforma de Automação Operacional e Relatórios Assíncronos",
+    "description": "Desenvolvimento de arquitetura para consolidação automatizada de dados dispersos e geração de relatórios analíticos em background (processamento assíncrono), com foco na eliminação de gargalos de performance e na redução do esforço manual da operação.",
     "tags": [
-      "Consolidação",
-      "Web Workers",
-      "CSV"
+      "Consolidação de dados",
+      "Automação",
+      "Processamento assíncrono"
     ],
     "preview": "operations",
     "icon": "layers",
-    "navigationTitle": "Dados & automação",
+    "navigationTitle": "Automação operacional",
     "demoURL": "./projetos/consolidacao-dados/",
-    "downloadURL": null,
-    "repositoryVisibility": "private"
-  },
-  {
-    "slug": "dashboard-operacional",
-    "number": "02",
-    "category": "BUSINESS INTELLIGENCE",
-    "title": "O pulso da operação",
-    "description": "Indicadores estratégicos e operacionais com filtros interativos, gráficos e atualização contínua simulada.",
-    "tags": [
-      "Dashboards",
-      "Indicadores",
-      "Visualização"
+    "demoNote": "Demonstração disponível: importação e validação de CSV, deduplicação e relatórios em segundo plano no navegador.",
+    "demos": [
+      {
+        "label": "Abrir demonstração",
+        "url": "./projetos/consolidacao-dados/",
+        "repositoryKey": "consolidacao-dados"
+      }
     ],
-    "preview": "dashboard",
-    "icon": "chart",
-    "navigationTitle": "Dashboard operacional",
-    "demoURL": "./projetos/dashboard-operacional/",
     "downloadURL": null,
     "repositoryVisibility": "private"
   },
   {
     "slug": "video-analitico",
-    "number": "03",
+    "number": "02",
     "category": "VISÃO COMPUTACIONAL",
-    "title": "O movimento vira um evento",
-    "description": "Comparação real de imagens para detectar movimento em uma região definida, usando cena de exemplo, câmera ou vídeo local.",
+    "title": "Sistema de Visão Computacional para Monitoramento de Conformidade",
+    "description": "Implementação de solução de Vídeo Analítico para detecção e validação automatizada de regras de negócio e segurança em tempo real, integrando a captura de eventos na ponta diretamente ao banco de dados para geração de alertas e auditoria.",
     "tags": [
       "Computer Vision",
-      "Vídeo",
-      "Monitoramento"
+      "Conformidade",
+      "Eventos e auditoria"
     ],
     "preview": "vision",
     "icon": "scan",
-    "navigationTitle": "Vídeo analítico",
+    "navigationTitle": "Visão computacional",
     "demoURL": "./projetos/video-analitico/",
+    "demoNote": "Demonstração disponível: detecção de movimento e eventos locais em uma região de interesse. A integração com banco e a validação de EPIs fazem parte do escopo de evolução.",
+    "demos": [
+      {
+        "label": "Abrir demonstração",
+        "url": "./projetos/video-analitico/",
+        "repositoryKey": "video-analitico"
+      }
+    ],
     "downloadURL": null,
     "repositoryVisibility": "private"
   },
   {
-    "slug": "laboratorio-sql",
-    "number": "04",
-    "category": "ENGENHARIA DE DADOS",
-    "title": "Dados sob consulta",
-    "description": "Modelagem relacional e consultas SQL executáveis com JOIN, agregações, CTE e funções de janela em SQLite.",
+    "slug": "ecossistema-dados",
+    "number": "03",
+    "category": "ENGENHARIA DE DADOS E BUSINESS INTELLIGENCE",
+    "title": "Ecossistema de Dados e Monitoramento Gerencial em Tempo Real",
+    "description": "Modelagem de banco de dados relacional, construção de queries SQL otimizadas para cruzamento de grandes volumes de informação e entrega de dashboards interativos em tempo real para acompanhamento de KPIs estratégicos e operacionais.",
     "tags": [
+      "Modelagem relacional",
       "SQL",
-      "Modelagem",
-      "Análise de dados"
+      "Dashboards e KPIs"
     ],
-    "preview": "sql",
+    "preview": "dashboard",
     "icon": "database",
-    "navigationTitle": "Laboratório SQL",
-    "demoURL": "./projetos/laboratorio-sql/",
+    "navigationTitle": "Ecossistema de dados",
+    "demoURL": "./ecossistema.html",
+    "demoNote": "Demonstrações disponíveis: consultas reais em SQLite e dashboard com filtros e atualização simulada sobre dados de exemplo.",
+    "demos": [
+      {
+        "label": "Abrir dashboard",
+        "url": "./projetos/dashboard-operacional/",
+        "repositoryKey": "dashboard-operacional"
+      },
+      {
+        "label": "Explorar SQL",
+        "url": "./projetos/laboratorio-sql/",
+        "repositoryKey": "laboratorio-sql"
+      }
+    ],
     "downloadURL": null,
     "repositoryVisibility": "private"
   }
