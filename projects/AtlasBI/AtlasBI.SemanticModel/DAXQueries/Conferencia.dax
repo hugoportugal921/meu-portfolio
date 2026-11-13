@@ -1,0 +1,8 @@
+EVALUATE
+SUMMARIZECOLUMNS(
+    DimUnidade[Unidade],
+    "Receita", [Receita Líquida],
+    "Lucro", [Lucro Bruto],
+    "Margem", [Margem Bruta %],
+    "Pedidos", [Pedidos]
+)

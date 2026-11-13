@@ -1,0 +1,74 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "QualidadeTabela",
+  "position": {
+    "x": 24,
+    "y": 120,
+    "z": 0,
+    "width": 760,
+    "height": 500,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "QualidadeDados"
+                    }
+                  },
+                  "Property": "Metrica"
+                }
+              },
+              "queryRef": "QualidadeDados.Metrica",
+              "nativeQueryRef": "Metrica"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "QualidadeDados"
+                    }
+                  },
+                  "Property": "Valor"
+                }
+              },
+              "queryRef": "QualidadeDados.Valor",
+              "nativeQueryRef": "Valor"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Reconciliação da carga: origem, exclusões e registros finais'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

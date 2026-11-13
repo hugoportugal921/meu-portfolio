@@ -1,0 +1,45 @@
+name: FinFlow CD to AKS (manual)
+on: {workflow_dispatch: {}}
+permissions: {contents: read, id-token: write}
+jobs:
+ deploy:
+  runs-on: ubuntu-latest
+  environment: staging
+  env:
+   AZURE_RESOURCE_GROUP: ${{ vars.AZURE_RESOURCE_GROUP }}
+   AKS_CLUSTER: ${{ vars.AKS_CLUSTER }}
+   ACR_NAME: ${{ vars.ACR_NAME }}
+   AUTH0_DOMAIN: ${{ vars.AUTH0_DOMAIN }}
+   AUTH0_CLIENT_ID: ${{ vars.AUTH0_CLIENT_ID }}
+   AUTH0_AUDIENCE: ${{ vars.AUTH0_AUDIENCE }}
+   FINFLOW_HOSTNAME: ${{ vars.FINFLOW_HOSTNAME }}
+  steps:
+   - uses: actions/checkout@v4
+   - uses: azure/login@v2
+     with:
+      client-id: ${{ vars.AZURE_CLIENT_ID }}
+      tenant-id: ${{ vars.AZURE_TENANT_ID }}
+      subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+   - name: Build and publish images
+     run: |
+      az acr login --name "$ACR_NAME"
+      registry="${ACR_NAME}.azurecr.io"
+      docker build --build-arg SERVICE=Transactions -t "$registry/finflow-transactions:$GITHUB_SHA" .
+      docker build --build-arg SERVICE=Ledger -t "$registry/finflow-ledger:$GITHUB_SHA" .
+      docker build --build-arg VITE_FINFLOW_MODE=api --build-arg VITE_AUTH_MODE=Auth0 --build-arg VITE_AUTH0_DOMAIN="$AUTH0_DOMAIN" --build-arg VITE_AUTH0_CLIENT_ID="$AUTH0_CLIENT_ID" --build-arg VITE_AUTH0_AUDIENCE="$AUTH0_AUDIENCE" -t "$registry/finflow-web:$GITHUB_SHA" web
+      docker push "$registry/finflow-transactions:$GITHUB_SHA"
+      docker push "$registry/finflow-ledger:$GITHUB_SHA"
+      docker push "$registry/finflow-web:$GITHUB_SHA"
+   - name: Apply and verify
+     run: |
+      az aks get-credentials --resource-group "$AZURE_RESOURCE_GROUP" --name "$AKS_CLUSTER" --overwrite-existing
+      export REGISTRY="${ACR_NAME}.azurecr.io" TAG="$GITHUB_SHA"
+      python3 scripts/render-k8s.py
+      kubectl -n finflow get secret finflow-runtime finflow-migrations finflow-tls
+      kubectl apply -f .deploy/runtime.yaml
+      kubectl -n finflow delete job transactions-migrate ledger-migrate --ignore-not-found
+      kubectl apply -f .deploy/migrations.yaml
+      kubectl -n finflow wait --for=condition=complete job/transactions-migrate job/ledger-migrate --timeout=180s
+      kubectl -n finflow rollout status deployment/transactions --timeout=180s
+      kubectl -n finflow rollout status deployment/ledger --timeout=180s
+      kubectl -n finflow rollout status deployment/web --timeout=180s

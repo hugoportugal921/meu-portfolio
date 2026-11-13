@@ -1,0 +1,1 @@
+Table.TransformColumnTypes(fxLerCsv("Calendario"), {{"Data", type date}, {"Ano", Int64.Type}, {"MesNumero", Int64.Type}, {"AnoMes", type text}, {"Trimestre", type text}, {"InicioMes", type date}}, "en-US")

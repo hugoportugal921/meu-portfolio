@@ -50,8 +50,8 @@ test('cartões contêm ações distintas e escapam textos de configuração',()=
   assert.match(html,/&quot;exemplo&quot; &amp; análise/);
 });
 
-test('HTML apresenta três projetos com arquivos locais presentes',async()=>{
-  const html=await readFile(new URL('index.html',root),'utf8');
+test('catálogo anterior preserva os três projetos e seus arquivos locais',async()=>{
+  const html=await readFile(new URL('catalogo-anterior.html',root),'utf8');
   for(const [,filename]of html.matchAll(/(?:src|href)="\.\/([^"#]+)"/g))await access(new URL(filename,root));
   for(const project of projects)assert.ok(html.includes(project.demoURL));
   assert.doesNotMatch(html,/base compartilhada|dados compartilhados|#operacoes|#dashboard|#visao|#sql/);

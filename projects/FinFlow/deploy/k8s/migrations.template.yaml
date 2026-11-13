@@ -1,0 +1,37 @@
+apiVersion: batch/v1
+kind: Job
+metadata: {name: transactions-migrate, namespace: finflow}
+spec:
+ backoffLimit: 0
+ activeDeadlineSeconds: 180
+ template:
+  spec:
+   restartPolicy: Never
+   securityContext: {runAsNonRoot: true, runAsUser: 1654}
+   containers:
+    - name: migrate
+      image: __REGISTRY__/finflow-transactions:__TAG__
+      args: [--migrate]
+      envFrom: [{configMapRef: {name: finflow-config}}]
+      env: [{name: ConnectionStrings__Database, valueFrom: {secretKeyRef: {name: finflow-migrations, key: transactions-sql}}}]
+      securityContext: {allowPrivilegeEscalation: false, capabilities: {drop: [ALL]}}
+      resources: {requests: {cpu: 100m, memory: 128Mi}, limits: {cpu: "1", memory: 512Mi}}
+---
+apiVersion: batch/v1
+kind: Job
+metadata: {name: ledger-migrate, namespace: finflow}
+spec:
+ backoffLimit: 0
+ activeDeadlineSeconds: 180
+ template:
+  spec:
+   restartPolicy: Never
+   securityContext: {runAsNonRoot: true, runAsUser: 1654}
+   containers:
+    - name: migrate
+      image: __REGISTRY__/finflow-ledger:__TAG__
+      args: [--migrate]
+      envFrom: [{configMapRef: {name: finflow-config}}]
+      env: [{name: ConnectionStrings__Database, valueFrom: {secretKeyRef: {name: finflow-migrations, key: ledger-sql}}}]
+      securityContext: {allowPrivilegeEscalation: false, capabilities: {drop: [ALL]}}
+      resources: {requests: {cpu: 100m, memory: 128Mi}, limits: {cpu: "1", memory: 512Mi}}

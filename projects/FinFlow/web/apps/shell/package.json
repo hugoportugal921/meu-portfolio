@@ -1,0 +1,1 @@
+{"name":"@finflow/shell","version":"1.0.0","private":true,"type":"module","scripts":{"build":"vite build --config vite.config.ts"}}

@@ -6,3 +6,10 @@ out/
 .openai/
 .env
 .env.*
+
+**/node_modules/
+**/bin/
+**/obj/
+**/.env
+**/.deploy/
+**/TestResults/

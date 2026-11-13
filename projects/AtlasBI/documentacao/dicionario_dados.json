@@ -1,0 +1,340 @@
+{
+  "granularidade": {
+    "FatoVendas": "item de pedido",
+    "FatoMetas": "mês e unidade"
+  },
+  "tabelas": {
+    "DimUnidade": [
+      [
+        "UnidadeID",
+        "int64"
+      ],
+      [
+        "Unidade",
+        "string"
+      ],
+      [
+        "Regiao",
+        "string"
+      ]
+    ],
+    "DimProduto": [
+      [
+        "ProdutoID",
+        "int64"
+      ],
+      [
+        "Produto",
+        "string"
+      ],
+      [
+        "Categoria",
+        "string"
+      ]
+    ],
+    "DimCanal": [
+      [
+        "CanalID",
+        "int64"
+      ],
+      [
+        "Canal",
+        "string"
+      ]
+    ],
+    "DimCalendario": [
+      [
+        "Data",
+        "dateTime"
+      ],
+      [
+        "Ano",
+        "int64"
+      ],
+      [
+        "MesNumero",
+        "int64"
+      ],
+      [
+        "AnoMes",
+        "string"
+      ],
+      [
+        "Trimestre",
+        "string"
+      ],
+      [
+        "InicioMes",
+        "dateTime"
+      ]
+    ],
+    "FatoVendas": [
+      [
+        "ItemID",
+        "string"
+      ],
+      [
+        "PedidoID",
+        "string"
+      ],
+      [
+        "DataVenda",
+        "dateTime"
+      ],
+      [
+        "ProdutoID",
+        "int64"
+      ],
+      [
+        "UnidadeID",
+        "int64"
+      ],
+      [
+        "CanalID",
+        "int64"
+      ],
+      [
+        "Quantidade",
+        "int64"
+      ],
+      [
+        "PrecoUnitario",
+        "decimal"
+      ],
+      [
+        "CustoUnitario",
+        "decimal"
+      ],
+      [
+        "Desconto",
+        "decimal"
+      ],
+      [
+        "ReceitaLiquida",
+        "decimal"
+      ],
+      [
+        "CustoTotal",
+        "decimal"
+      ]
+    ],
+    "FatoMetas": [
+      [
+        "DataMeta",
+        "dateTime"
+      ],
+      [
+        "UnidadeID",
+        "int64"
+      ],
+      [
+        "MetaReceita",
+        "decimal"
+      ]
+    ],
+    "AcessoUnidade": [
+      [
+        "Email",
+        "string"
+      ],
+      [
+        "UnidadeID",
+        "int64"
+      ]
+    ],
+    "QualidadeDados": [
+      [
+        "Metrica",
+        "string"
+      ],
+      [
+        "Valor",
+        "int64"
+      ]
+    ],
+    "Medidas": [
+      [
+        "Valor",
+        "int64"
+      ]
+    ]
+  },
+  "relacionamentos": [
+    {
+      "name": "d82f1174-1f09-5f74-a581-bf335f44abf6",
+      "fromTable": "FatoVendas",
+      "fromColumn": "DataVenda",
+      "toTable": "DimCalendario",
+      "toColumn": "Data",
+      "crossFilteringBehavior": "oneDirection",
+      "fromCardinality": "many",
+      "toCardinality": "one",
+      "isActive": true
+    },
+    {
+      "name": "0e2a26b6-fb0f-5c41-b39a-868d1839b51b",
+      "fromTable": "FatoVendas",
+      "fromColumn": "UnidadeID",
+      "toTable": "DimUnidade",
+      "toColumn": "UnidadeID",
+      "crossFilteringBehavior": "oneDirection",
+      "fromCardinality": "many",
+      "toCardinality": "one",
+      "isActive": true
+    },
+    {
+      "name": "fb631630-e96d-5041-820e-abbe060e3a1f",
+      "fromTable": "FatoVendas",
+      "fromColumn": "ProdutoID",
+      "toTable": "DimProduto",
+      "toColumn": "ProdutoID",
+      "crossFilteringBehavior": "oneDirection",
+      "fromCardinality": "many",
+      "toCardinality": "one",
+      "isActive": true
+    },
+    {
+      "name": "689448b2-28b4-5d20-828d-2dc579d042b6",
+      "fromTable": "FatoVendas",
+      "fromColumn": "CanalID",
+      "toTable": "DimCanal",
+      "toColumn": "CanalID",
+      "crossFilteringBehavior": "oneDirection",
+      "fromCardinality": "many",
+      "toCardinality": "one",
+      "isActive": true
+    },
+    {
+      "name": "892df12f-2eec-5b1c-9b79-f30b889c8cba",
+      "fromTable": "FatoMetas",
+      "fromColumn": "DataMeta",
+      "toTable": "DimCalendario",
+      "toColumn": "Data",
+      "crossFilteringBehavior": "oneDirection",
+      "fromCardinality": "many",
+      "toCardinality": "one",
+      "isActive": true
+    },
+    {
+      "name": "14403547-fd4c-5b60-bbf8-648ff545bfb6",
+      "fromTable": "FatoMetas",
+      "fromColumn": "UnidadeID",
+      "toTable": "DimUnidade",
+      "toColumn": "UnidadeID",
+      "crossFilteringBehavior": "oneDirection",
+      "fromCardinality": "many",
+      "toCardinality": "one",
+      "isActive": true
+    }
+  ],
+  "medidas": [
+    {
+      "nome": "Receita Bruta",
+      "dax": "SUMX(FatoVendas, FatoVendas[Quantidade] * FatoVendas[PrecoUnitario])",
+      "formato": "moeda",
+      "definicao": "Receita antes dos descontos."
+    },
+    {
+      "nome": "Descontos",
+      "dax": "SUM(FatoVendas[Desconto])",
+      "formato": "moeda",
+      "definicao": "Desconto monetário do item, sem repetir por pedido."
+    },
+    {
+      "nome": "Receita Líquida",
+      "dax": "SUM(FatoVendas[ReceitaLiquida])",
+      "formato": "moeda",
+      "definicao": "Quantidade × preço unitário − desconto do item."
+    },
+    {
+      "nome": "Custo das Vendas",
+      "dax": "SUM(FatoVendas[CustoTotal])",
+      "formato": "moeda",
+      "definicao": "Custo unitário × quantidade."
+    },
+    {
+      "nome": "Lucro Bruto",
+      "dax": "[Receita Líquida] - [Custo das Vendas]",
+      "formato": "moeda",
+      "definicao": "Receita líquida menos custo das mercadorias e serviços."
+    },
+    {
+      "nome": "Margem Bruta %",
+      "dax": "DIVIDE([Lucro Bruto], [Receita Líquida])",
+      "formato": "percentual",
+      "definicao": "Margem calculada sobre os totais; não é média simples das margens."
+    },
+    {
+      "nome": "Pedidos",
+      "dax": "DISTINCTCOUNT(FatoVendas[PedidoID])",
+      "formato": "inteiro",
+      "definicao": "Pedidos distintos no contexto de filtros, sem duplicar itens."
+    },
+    {
+      "nome": "Itens Vendidos",
+      "dax": "SUM(FatoVendas[Quantidade])",
+      "formato": "inteiro",
+      "definicao": "Quantidade total de itens."
+    },
+    {
+      "nome": "Ticket Médio",
+      "dax": "DIVIDE([Receita Líquida], [Pedidos])",
+      "formato": "moeda",
+      "definicao": "Receita líquida por pedido distinto no contexto atual."
+    },
+    {
+      "nome": "Meta Receita",
+      "dax": "IF(ISCROSSFILTERED(DimProduto) || ISCROSSFILTERED(DimCanal), BLANK(), SUM(FatoMetas[MetaReceita]))",
+      "formato": "moeda",
+      "definicao": "A meta existe por mês e unidade. Filtros de produto ou canal deixam a meta indisponível."
+    },
+    {
+      "nome": "Atingimento %",
+      "dax": "DIVIDE([Receita Líquida], [Meta Receita])",
+      "formato": "percentual",
+      "definicao": "Realizado dividido pela meta compatível com os filtros."
+    },
+    {
+      "nome": "Desvio da Meta",
+      "dax": "IF(NOT ISBLANK([Meta Receita]), [Receita Líquida] - [Meta Receita])",
+      "formato": "moeda",
+      "definicao": "Desvio absoluto, somente quando há meta comparável."
+    },
+    {
+      "nome": "Receita Ano Anterior",
+      "dax": "VAR Inicio = MIN(DimCalendario[Data])\nVAR InicioBase = CALCULATE(MIN(DimCalendario[Data]), REMOVEFILTERS(DimCalendario))\nRETURN IF(DATE(YEAR(Inicio) - 1, MONTH(Inicio), DAY(Inicio)) >= InicioBase, CALCULATE([Receita Líquida], SAMEPERIODLASTYEAR(DimCalendario[Data])))",
+      "formato": "moeda",
+      "definicao": "Mesmo intervalo do ano anterior; vazio quando o início do histórico não cobre a comparação completa."
+    },
+    {
+      "nome": "Variação Anual %",
+      "dax": "VAR Anterior = [Receita Ano Anterior]\nRETURN IF(NOT ISBLANK(Anterior), DIVIDE([Receita Líquida] - Anterior, Anterior))",
+      "formato": "percentual",
+      "definicao": "Comparação com ano anterior no mesmo contexto."
+    },
+    {
+      "nome": "Receita YTD",
+      "dax": "TOTALYTD([Receita Líquida], DimCalendario[Data])",
+      "formato": "moeda",
+      "definicao": "Acumulado no ano no contexto da dimensão de datas."
+    },
+    {
+      "nome": "Receita Mês Anterior",
+      "dax": "IF(HASONEVALUE(DimCalendario[AnoMes]), CALCULATE([Receita Líquida], DATEADD(DimCalendario[Data], -1, MONTH)))",
+      "formato": "moeda",
+      "definicao": "Disponível ao selecionar um único mês; vazio quando não existe histórico anterior."
+    },
+    {
+      "nome": "Variação Mensal %",
+      "dax": "VAR Anterior = [Receita Mês Anterior]\nRETURN IF(NOT ISBLANK(Anterior), DIVIDE([Receita Líquida] - Anterior, Anterior))",
+      "formato": "percentual",
+      "definicao": "Comparação com o período mensal anterior."
+    },
+    {
+      "nome": "Unidade Selecionada",
+      "dax": "SELECTEDVALUE(DimUnidade[Unidade], \"Todas as unidades\")",
+      "formato": "texto",
+      "definicao": "Texto que identifica o filtro da unidade."
+    }
+  ]
+}

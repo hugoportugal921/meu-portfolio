@@ -1,0 +1,158 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "DetalheVendas",
+  "position": {
+    "x": 24,
+    "y": 130,
+    "z": 0,
+    "width": 1232,
+    "height": 555,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FatoVendas"
+                    }
+                  },
+                  "Property": "DataVenda"
+                }
+              },
+              "queryRef": "FatoVendas.DataVenda",
+              "nativeQueryRef": "DataVenda"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FatoVendas"
+                    }
+                  },
+                  "Property": "PedidoID"
+                }
+              },
+              "queryRef": "FatoVendas.PedidoID",
+              "nativeQueryRef": "PedidoID"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FatoVendas"
+                    }
+                  },
+                  "Property": "ItemID"
+                }
+              },
+              "queryRef": "FatoVendas.ItemID",
+              "nativeQueryRef": "ItemID"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimUnidade"
+                    }
+                  },
+                  "Property": "Unidade"
+                }
+              },
+              "queryRef": "DimUnidade.Unidade",
+              "nativeQueryRef": "Unidade"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimProduto"
+                    }
+                  },
+                  "Property": "Produto"
+                }
+              },
+              "queryRef": "DimProduto.Produto",
+              "nativeQueryRef": "Produto"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FatoVendas"
+                    }
+                  },
+                  "Property": "Quantidade"
+                }
+              },
+              "queryRef": "FatoVendas.Quantidade",
+              "nativeQueryRef": "Quantidade"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FatoVendas"
+                    }
+                  },
+                  "Property": "ReceitaLiquida"
+                }
+              },
+              "queryRef": "FatoVendas.ReceitaLiquida",
+              "nativeQueryRef": "ReceitaLiquida"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FatoVendas"
+                    }
+                  },
+                  "Property": "CustoTotal"
+                }
+              },
+              "queryRef": "FatoVendas.CustoTotal",
+              "nativeQueryRef": "CustoTotal"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Rastreabilidade por item de pedido'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

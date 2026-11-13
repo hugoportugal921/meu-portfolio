@@ -1,12 +1,12 @@
 {
   "name": "portfolio-dados-sistemas",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
   "type": "module",
-  "description": "Portfólio em três projetos: automação operacional, visão computacional e ecossistema de dados",
+  "description": "Portfólio profissional: software, dados, automação, FinFlow e Power BI",
   "scripts": {
     "start": "node serve.mjs",
-    "test": "node --test",
+    "test": "node --test tests/catalog.test.mjs tests/routes.test.mjs",
     "build": "node build.mjs"
   },
   "engines": {

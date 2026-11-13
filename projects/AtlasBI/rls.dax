@@ -1,0 +1,2 @@
+// Função AcessoPorUnidade: filtro da dimensão DimUnidade
+COUNTROWS(FILTER(AcessoUnidade, AcessoUnidade[UnidadeID] = DimUnidade[UnidadeID] && LOWER(AcessoUnidade[Email]) = LOWER(USERPRINCIPALNAME()))) > 0

@@ -1,0 +1,260 @@
+{
+  "escopo": "Amostra sintética determinística. Não representa clientes, faturamento ou resultados profissionais.",
+  "periodo": [
+    "2025-01-01",
+    "2026-10-31"
+  ],
+  "qualidade": {
+    "linhasOriginais": 4806,
+    "duplicadosRemovidos": 4,
+    "invalidosRemovidos": 2,
+    "linhasFinais": 4800
+  },
+  "total": {
+    "receitaCentavos": 2010654547,
+    "custoCentavos": 1274998132,
+    "lucroCentavos": 735656415,
+    "margem": 0.36587906962816524,
+    "pedidos": 2400,
+    "ticketCentavos": 837772.7279166667,
+    "itens": 21513
+  },
+  "porUnidade": {
+    "1": {
+      "receitaCentavos": 733068650,
+      "custoCentavos": 462957619,
+      "lucroCentavos": 270111031,
+      "margem": 0.36846621527192575,
+      "pedidos": 850,
+      "ticketCentavos": 862433.7058823529,
+      "itens": 7748
+    },
+    "2": {
+      "receitaCentavos": 462749581,
+      "custoCentavos": 294223489,
+      "lucroCentavos": 168526092,
+      "margem": 0.36418421305928744,
+      "pedidos": 550,
+      "ticketCentavos": 841362.8745454545,
+      "itens": 4891
+    },
+    "3": {
+      "receitaCentavos": 448786836,
+      "custoCentavos": 284966040,
+      "lucroCentavos": 163820796,
+      "margem": 0.3650303058354412,
+      "pedidos": 560,
+      "ticketCentavos": 801405.0642857143,
+      "itens": 4991
+    },
+    "4": {
+      "receitaCentavos": 366049480,
+      "custoCentavos": 232850984,
+      "lucroCentavos": 133198496,
+      "margem": 0.3638811233934822,
+      "pedidos": 440,
+      "ticketCentavos": 831930.6363636364,
+      "itens": 3883
+    }
+  },
+  "porMes": {
+    "2025-01": {
+      "receitaCentavos": 95361627,
+      "custoCentavos": 58424052,
+      "lucroCentavos": 36937575,
+      "margem": 0.38734212242414867,
+      "pedidos": 117,
+      "ticketCentavos": 815056.641025641,
+      "itens": 1074
+    },
+    "2025-02": {
+      "receitaCentavos": 113684419,
+      "custoCentavos": 70191087,
+      "lucroCentavos": 43493332,
+      "margem": 0.3825795336122534,
+      "pedidos": 111,
+      "ticketCentavos": 1024183.9549549549,
+      "itens": 1045
+    },
+    "2025-03": {
+      "receitaCentavos": 75274833,
+      "custoCentavos": 47617138,
+      "lucroCentavos": 27657695,
+      "margem": 0.36742286761366844,
+      "pedidos": 97,
+      "ticketCentavos": 776029.206185567,
+      "itens": 829
+    },
+    "2025-04": {
+      "receitaCentavos": 86728656,
+      "custoCentavos": 54001560,
+      "lucroCentavos": 32727096,
+      "margem": 0.3773504342094267,
+      "pedidos": 107,
+      "ticketCentavos": 810548.1869158879,
+      "itens": 983
+    },
+    "2025-05": {
+      "receitaCentavos": 88643206,
+      "custoCentavos": 56937647,
+      "lucroCentavos": 31705559,
+      "margem": 0.3576761314341451,
+      "pedidos": 104,
+      "ticketCentavos": 852338.5192307692,
+      "itens": 873
+    },
+    "2025-06": {
+      "receitaCentavos": 74108962,
+      "custoCentavos": 47202619,
+      "lucroCentavos": 26906343,
+      "margem": 0.36306463177827264,
+      "pedidos": 107,
+      "ticketCentavos": 692607.1214953271,
+      "itens": 967
+    },
+    "2025-07": {
+      "receitaCentavos": 83516581,
+      "custoCentavos": 51275159,
+      "lucroCentavos": 32241422,
+      "margem": 0.38604815491668654,
+      "pedidos": 96,
+      "ticketCentavos": 869964.3854166666,
+      "itens": 853
+    },
+    "2025-08": {
+      "receitaCentavos": 87334690,
+      "custoCentavos": 56270530,
+      "lucroCentavos": 31064160,
+      "margem": 0.35569096312129805,
+      "pedidos": 113,
+      "ticketCentavos": 772873.3628318585,
+      "itens": 980
+    },
+    "2025-09": {
+      "receitaCentavos": 87581468,
+      "custoCentavos": 54372388,
+      "lucroCentavos": 33209080,
+      "margem": 0.37917930309183673,
+      "pedidos": 118,
+      "ticketCentavos": 742215.8305084746,
+      "itens": 1019
+    },
+    "2025-10": {
+      "receitaCentavos": 105422744,
+      "custoCentavos": 67855861,
+      "lucroCentavos": 37566883,
+      "margem": 0.35634514502866665,
+      "pedidos": 117,
+      "ticketCentavos": 901049.094017094,
+      "itens": 1105
+    },
+    "2025-11": {
+      "receitaCentavos": 73069202,
+      "custoCentavos": 46737188,
+      "lucroCentavos": 26332014,
+      "margem": 0.36037089880904954,
+      "pedidos": 97,
+      "ticketCentavos": 753290.7422680412,
+      "itens": 828
+    },
+    "2025-12": {
+      "receitaCentavos": 91829819,
+      "custoCentavos": 57868290,
+      "lucroCentavos": 33961529,
+      "margem": 0.3698311656260588,
+      "pedidos": 102,
+      "ticketCentavos": 900292.3431372549,
+      "itens": 922
+    },
+    "2026-01": {
+      "receitaCentavos": 82978016,
+      "custoCentavos": 53565748,
+      "lucroCentavos": 29412268,
+      "margem": 0.35445855924055836,
+      "pedidos": 114,
+      "ticketCentavos": 727877.3333333334,
+      "itens": 1038
+    },
+    "2026-02": {
+      "receitaCentavos": 94827885,
+      "custoCentavos": 60888364,
+      "lucroCentavos": 33939521,
+      "margem": 0.35790654826900337,
+      "pedidos": 99,
+      "ticketCentavos": 957857.4242424242,
+      "itens": 936
+    },
+    "2026-03": {
+      "receitaCentavos": 95336493,
+      "custoCentavos": 58507737,
+      "lucroCentavos": 36828756,
+      "margem": 0.38630281900551977,
+      "pedidos": 108,
+      "ticketCentavos": 882745.3055555555,
+      "itens": 952
+    },
+    "2026-04": {
+      "receitaCentavos": 94236668,
+      "custoCentavos": 60111997,
+      "lucroCentavos": 34124671,
+      "margem": 0.3621166975046274,
+      "pedidos": 108,
+      "ticketCentavos": 872561.7407407408,
+      "itens": 952
+    },
+    "2026-05": {
+      "receitaCentavos": 104553489,
+      "custoCentavos": 67010157,
+      "lucroCentavos": 37543332,
+      "margem": 0.3590825362126366,
+      "pedidos": 114,
+      "ticketCentavos": 917135.8684210526,
+      "itens": 1022
+    },
+    "2026-06": {
+      "receitaCentavos": 82738742,
+      "custoCentavos": 52757382,
+      "lucroCentavos": 29981360,
+      "margem": 0.362361806274502,
+      "pedidos": 107,
+      "ticketCentavos": 773259.2710280374,
+      "itens": 977
+    },
+    "2026-07": {
+      "receitaCentavos": 104496309,
+      "custoCentavos": 67602808,
+      "lucroCentavos": 36893501,
+      "margem": 0.3530603267527851,
+      "pedidos": 117,
+      "ticketCentavos": 893130.8461538461,
+      "itens": 1061
+    },
+    "2026-08": {
+      "receitaCentavos": 95255641,
+      "custoCentavos": 62528304,
+      "lucroCentavos": 32727337,
+      "margem": 0.3435737417377728,
+      "pedidos": 121,
+      "ticketCentavos": 787236.7024793389,
+      "itens": 1001
+    },
+    "2026-09": {
+      "receitaCentavos": 103052205,
+      "custoCentavos": 64992414,
+      "lucroCentavos": 38059791,
+      "margem": 0.36932534340240464,
+      "pedidos": 117,
+      "ticketCentavos": 880788.0769230769,
+      "itens": 1061
+    },
+    "2026-10": {
+      "receitaCentavos": 90622892,
+      "custoCentavos": 58279702,
+      "lucroCentavos": 32343190,
+      "margem": 0.35689867412309023,
+      "pedidos": 109,
+      "ticketCentavos": 831402.6788990826,
+      "itens": 1035
+    }
+  }
+}

@@ -1,0 +1,17 @@
+ProdutoID,Produto,Categoria
+1,Notebook corporativo,Tecnologia
+2,Monitor profissional,Tecnologia
+3,Dock station,Tecnologia
+4,Teclado sem fio,Tecnologia
+5,Cadeira ergonômica,Escritório
+6,Mesa de trabalho,Escritório
+7,Organizador modular,Escritório
+8,Kit escritório,Escritório
+9,Suporte técnico,Serviços
+10,Implantação assistida,Serviços
+11,Treinamento de equipe,Serviços
+12,Consultoria de dados,Serviços
+13,Headset,Acessórios
+14,Webcam,Acessórios
+15,Mochila executiva,Acessórios
+16,Hub USB,Acessórios

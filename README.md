@@ -1,46 +1,57 @@
-# Eng. Hugo Portugal — Portfólio profissional
+# Hugo Portugal — Portfólio profissional
 
-[Acessar o portfólio](https://hugoportugal921.github.io/meu-portfolio/)
+**[Acessar o portfólio](https://hugoportugal921.github.io/meu-portfolio/)** · [Código-fonte do FinFlow](projects/FinFlow/README.md) · [Projeto Power BI](projects/AtlasBI/)
 
-Apresentação de Hugo Portugal Vasconcelos, engenheiro metalúrgico com especialização em Engenharia de Software e Sistemas.
+Portfólio de Hugo Portugal Vasconcelos, com projetos independentes de desenvolvimento de software, análise de dados e automação. A página apresenta o problema de cada projeto, a abordagem técnica e o que pode ser avaliado como estudo, código ou demonstração.
 
-## Organização em três projetos
+## Projetos em destaque
 
-1. Plataforma de Automação Operacional e Relatórios Assíncronos.
-2. Sistema de Visão Computacional para Monitoramento de Conformidade.
-3. Ecossistema de Dados e Monitoramento Gerencial em Tempo Real — reúne dashboard e SQL na página ecossistema.html.
+| Projeto | O que está disponível |
+| --- | --- |
+| SIGB | Estudo de requisitos e arquitetura para gestão de bolsas; solução em planejamento. |
+| SIGSST | Demonstração interativa com indicadores, ações e inventário ilustrativo de riscos. |
+| Painel operacional | Filtros, indicadores e gráficos com dados simulados. |
+| Consolidação de dados | Importação de CSV, validação e geração de relatórios no navegador. |
+| Vídeo analítico | Detecção de movimento por diferenças entre quadros, sem reconhecimento de pessoas ou EPIs. |
+| Atlas BI | Projeto Power BI com Power Query, modelo em estrela, DAX e relatório; inclui prévia web e pacote técnico. |
+| FinFlow | Código .NET 8, SQL Server, RabbitMQ e React; demonstração de transferências internas com dados simulados. |
 
-As descrições apresentam o escopo dos projetos; cada cartão identifica o que pode ser testado nas demonstrações estáticas. São três projetos apresentados e quatro demonstrações preservadas.
+## Demonstrações e código
 
-## Páginas e demonstrações
+- [FinFlow — demonstração](https://hugoportugal921.github.io/meu-portfolio/finflow/) e [código](projects/FinFlow/README.md).
+- [Atlas BI — prévia](https://hugoportugal921.github.io/meu-portfolio/powerbi/) e [arquivos Power BI](projects/AtlasBI/).
+- [Consolidação de dados](https://hugoportugal921.github.io/meu-portfolio/projetos/consolidacao-dados/).
+- [Dashboard operacional](https://hugoportugal921.github.io/meu-portfolio/projetos/dashboard-operacional/).
+- [Vídeo analítico](https://hugoportugal921.github.io/meu-portfolio/projetos/video-analitico/).
+- [Laboratório SQL](https://hugoportugal921.github.io/meu-portfolio/projetos/laboratorio-sql/).
 
-- Perfil profissional: perfil.html
-- Consolidação de dados: projetos/consolidacao-dados/
-- Dashboard operacional: projetos/dashboard-operacional/
-- Vídeo analítico: projetos/video-analitico/
-- Laboratório SQL: projetos/laboratorio-sql/
+As demonstrações estáticas utilizam dados fictícios e não exigem autenticação. O FinFlow hospedado no GitHub Pages funciona no navegador; os serviços .NET, SQL Server e RabbitMQ são executados separadamente, conforme seu README. Auth0 e AKS dependem de ambiente configurado. O registro de validação diferencia os testes executados das integrações pendentes.
 
-A apresentação e as quatro demonstrações funcionam no mesmo endereço do GitHub Pages, sem autenticação. O site publica os arquivos estáticos (HTML, CSS, JavaScript, fontes e WebAssembly) necessários à execução no navegador. Os quatro repositórios originais dos projetos permanecem privados.
+O Atlas BI inclui um projeto nativo para abrir no Power BI Desktop. A prévia web não é um relatório Power BI incorporado; a execução do modelo e a publicação no Power BI Service precisam ser validadas no respectivo ambiente.
 
-## Executar localmente
+## Organização
 
-Requer Node.js 20 ou mais recente. Não há dependências a instalar.
+- `docs/`: arquivos publicados pelo GitHub Pages, prévias, demonstrações e downloads.
+- `projects/FinFlow/`: APIs, regras de negócio, testes, microfrontends, Docker e preparação para AKS.
+- `projects/AtlasBI/`: fontes e arquivos do projeto Power BI.
+- `docs/catalogo-anterior.html`, `perfil.html` e `ecossistema.html`: apresentação anterior e páginas preservadas.
+
+Os repositórios originais das quatro demonstrações anteriores mantêm suas configurações de acesso. Os arquivos publicados neste repositório são os materiais autorizados para o portfólio.
+
+## Executar e verificar
+
+Para o portfólio estático, use Node.js 20 ou superior. Não há dependências a instalar na raiz.
 
 ```sh
-node serve.mjs
-node --test
+npm test
+npm run build
+npm start
 ```
 
-Abra http://127.0.0.1:4173. No Windows, iniciar.cmd também inicia o servidor.
+Abra http://127.0.0.1:4173. No Windows, `iniciar.cmd` inicia o mesmo servidor. Para executar os serviços do FinFlow e os testes .NET/React, siga [o procedimento do projeto](projects/FinFlow/README.md).
 
 ## Publicação
 
-GitHub Pages serve docs da branch main. Todos os links da aplicação são relativos e compatíveis com /meu-portfolio/. Os links externos de código apontam para GitHub. docs/.nojekyll desativa processamento Jekyll.
+O GitHub Pages publica a pasta `docs` da branch `main`. Os caminhos são compatíveis com o subdiretório `/meu-portfolio/`. O arquivo `.nojekyll` mantém a publicação estática. O endereço público não utiliza domínio do ChatGPT.
 
-## Dados e recursos
-
-As demonstrações usam dados fictícios e processam os dados localmente. Relatórios e SQLite são executados em Workers. O vídeo analítico compara quadros; a cena de exemplo funciona sem câmera. Usar câmera depende da permissão do visitante para o domínio atual.
-
-## Créditos
-
-Fontes DM Sans e Manrope: licenças OFL incluídas em fonts/. O laboratório SQL inclui sql.js e sua licença no diretório vendor/.
+As licenças OFL das fontes usadas nas demonstrações anteriores e a licença do sql.js foram preservadas nos diretórios correspondentes.

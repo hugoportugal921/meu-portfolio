@@ -1,0 +1,118 @@
+apiVersion: v1
+kind: Namespace
+metadata: {name: finflow}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata: {name: finflow-config, namespace: finflow}
+data:
+ ASPNETCORE_ENVIRONMENT: Production
+ ASPNETCORE_HTTP_PORTS: "8080"
+ Auth__Mode: Auth0
+ Auth0__Authority: "https://__AUTH0_DOMAIN__/"
+ Auth0__Audience: "__AUTH0_AUDIENCE__"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: {name: transactions, namespace: finflow}
+spec:
+ replicas: 2
+ selector: {matchLabels: {app: finflow, component: transactions}}
+ template:
+  metadata: {labels: {app: finflow, component: transactions}}
+  spec:
+   securityContext: {runAsNonRoot: true, runAsUser: 1654, fsGroup: 1654}
+   containers:
+    - name: api
+      image: __REGISTRY__/finflow-transactions:__TAG__
+      ports: [{containerPort: 8080}]
+      envFrom: [{configMapRef: {name: finflow-config}}]
+      env:
+       - {name: ConnectionStrings__Database, valueFrom: {secretKeyRef: {name: finflow-runtime, key: transactions-sql}}}
+       - {name: RabbitMQ__Uri, valueFrom: {secretKeyRef: {name: finflow-runtime, key: rabbitmq-uri}}}
+      securityContext: {allowPrivilegeEscalation: false, readOnlyRootFilesystem: true, capabilities: {drop: [ALL]}}
+      resources: {requests: {cpu: 100m, memory: 128Mi}, limits: {cpu: "1", memory: 512Mi}}
+      startupProbe: {httpGet: {path: /health/live, port: 8080}, failureThreshold: 30, periodSeconds: 5}
+      readinessProbe: {httpGet: {path: /health/ready, port: 8080}, periodSeconds: 5}
+      livenessProbe: {httpGet: {path: /health/live, port: 8080}, periodSeconds: 15}
+      volumeMounts: [{name: tmp, mountPath: /tmp}]
+   volumes: [{name: tmp, emptyDir: {}}]
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: {name: ledger, namespace: finflow}
+spec:
+ replicas: 2
+ selector: {matchLabels: {app: finflow, component: ledger}}
+ template:
+  metadata: {labels: {app: finflow, component: ledger}}
+  spec:
+   securityContext: {runAsNonRoot: true, runAsUser: 1654, fsGroup: 1654}
+   containers:
+    - name: api
+      image: __REGISTRY__/finflow-ledger:__TAG__
+      ports: [{containerPort: 8080}]
+      envFrom: [{configMapRef: {name: finflow-config}}]
+      env:
+       - {name: ConnectionStrings__Database, valueFrom: {secretKeyRef: {name: finflow-runtime, key: ledger-sql}}}
+       - {name: RabbitMQ__Uri, valueFrom: {secretKeyRef: {name: finflow-runtime, key: rabbitmq-uri}}}
+      securityContext: {allowPrivilegeEscalation: false, readOnlyRootFilesystem: true, capabilities: {drop: [ALL]}}
+      resources: {requests: {cpu: 100m, memory: 128Mi}, limits: {cpu: "1", memory: 512Mi}}
+      startupProbe: {httpGet: {path: /health/live, port: 8080}, failureThreshold: 30, periodSeconds: 5}
+      readinessProbe: {httpGet: {path: /health/ready, port: 8080}, periodSeconds: 5}
+      livenessProbe: {httpGet: {path: /health/live, port: 8080}, periodSeconds: 15}
+      volumeMounts: [{name: tmp, mountPath: /tmp}]
+   volumes: [{name: tmp, emptyDir: {}}]
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: {name: web, namespace: finflow}
+spec:
+ replicas: 2
+ selector: {matchLabels: {app: finflow, component: web}}
+ template:
+  metadata: {labels: {app: finflow, component: web}}
+  spec:
+   securityContext: {runAsNonRoot: true, runAsUser: 101}
+   containers:
+    - name: web
+      image: __REGISTRY__/finflow-web:__TAG__
+      ports: [{containerPort: 8080}]
+      securityContext: {allowPrivilegeEscalation: false, capabilities: {drop: [ALL]}}
+      resources: {requests: {cpu: 50m, memory: 64Mi}, limits: {cpu: 500m, memory: 128Mi}}
+      readinessProbe: {httpGet: {path: /, port: 8080}}
+      livenessProbe: {httpGet: {path: /, port: 8080}}
+---
+apiVersion: v1
+kind: Service
+metadata: {name: transactions, namespace: finflow}
+spec: {selector: {app: finflow, component: transactions}, ports: [{port: 8080, targetPort: 8080}]}
+---
+apiVersion: v1
+kind: Service
+metadata: {name: ledger, namespace: finflow}
+spec: {selector: {app: finflow, component: ledger}, ports: [{port: 8080, targetPort: 8080}]}
+---
+apiVersion: v1
+kind: Service
+metadata: {name: web, namespace: finflow}
+spec: {selector: {app: finflow, component: web}, ports: [{port: 8080, targetPort: 8080}]}
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata: {name: ledger, namespace: finflow}
+spec:
+ scaleTargetRef: {apiVersion: apps/v1, kind: Deployment, name: ledger}
+ minReplicas: 2
+ maxReplicas: 6
+ metrics: [{type: Resource, resource: {name: cpu, target: {type: Utilization, averageUtilization: 70}}}]
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata: {name: finflow, namespace: finflow}
+spec:
+ ingressClassName: webapprouting.kubernetes.azure.com
+ tls: [{hosts: [__FINFLOW_HOSTNAME__], secretName: finflow-tls}]
+ rules:
+  - host: __FINFLOW_HOSTNAME__
+    http: {paths: [{path: /, pathType: Prefix, backend: {service: {name: web, port: {number: 8080}}}}]}

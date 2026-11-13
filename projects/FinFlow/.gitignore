@@ -1,0 +1,11 @@
+**/bin/
+**/obj/
+**/node_modules/
+web/build/
+web/.env
+.env
+TestResults/
+*.user
+web/apps/*/dist/
+.deploy/
+artifacts/

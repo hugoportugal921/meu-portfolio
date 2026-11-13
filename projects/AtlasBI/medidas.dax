@@ -1,0 +1,57 @@
+Receita Bruta =
+SUMX(FatoVendas, FatoVendas[Quantidade] * FatoVendas[PrecoUnitario])
+
+Descontos =
+SUM(FatoVendas[Desconto])
+
+Receita Líquida =
+SUM(FatoVendas[ReceitaLiquida])
+
+Custo das Vendas =
+SUM(FatoVendas[CustoTotal])
+
+Lucro Bruto =
+[Receita Líquida] - [Custo das Vendas]
+
+Margem Bruta % =
+DIVIDE([Lucro Bruto], [Receita Líquida])
+
+Pedidos =
+DISTINCTCOUNT(FatoVendas[PedidoID])
+
+Itens Vendidos =
+SUM(FatoVendas[Quantidade])
+
+Ticket Médio =
+DIVIDE([Receita Líquida], [Pedidos])
+
+Meta Receita =
+IF(ISCROSSFILTERED(DimProduto) || ISCROSSFILTERED(DimCanal), BLANK(), SUM(FatoMetas[MetaReceita]))
+
+Atingimento % =
+DIVIDE([Receita Líquida], [Meta Receita])
+
+Desvio da Meta =
+IF(NOT ISBLANK([Meta Receita]), [Receita Líquida] - [Meta Receita])
+
+Receita Ano Anterior =
+VAR Inicio = MIN(DimCalendario[Data])
+VAR InicioBase = CALCULATE(MIN(DimCalendario[Data]), REMOVEFILTERS(DimCalendario))
+RETURN IF(DATE(YEAR(Inicio) - 1, MONTH(Inicio), DAY(Inicio)) >= InicioBase, CALCULATE([Receita Líquida], SAMEPERIODLASTYEAR(DimCalendario[Data])))
+
+Variação Anual % =
+VAR Anterior = [Receita Ano Anterior]
+RETURN IF(NOT ISBLANK(Anterior), DIVIDE([Receita Líquida] - Anterior, Anterior))
+
+Receita YTD =
+TOTALYTD([Receita Líquida], DimCalendario[Data])
+
+Receita Mês Anterior =
+IF(HASONEVALUE(DimCalendario[AnoMes]), CALCULATE([Receita Líquida], DATEADD(DimCalendario[Data], -1, MONTH)))
+
+Variação Mensal % =
+VAR Anterior = [Receita Mês Anterior]
+RETURN IF(NOT ISBLANK(Anterior), DIVIDE([Receita Líquida] - Anterior, Anterior))
+
+Unidade Selecionada =
+SELECTEDVALUE(DimUnidade[Unidade], "Todas as unidades")
