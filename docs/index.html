@@ -35,6 +35,63 @@ html[data-theme=dark]{color-scheme:dark;--bg:#101612;--surface:#18201a;--soft:#2
 .powerbi-card{grid-column:1/-1;display:grid;grid-template-columns:.8fr 1.2fr}.powerbi-cover{background:#1d281d;color:#f1f5e8;min-height:300px;height:auto;display:flex;flex-direction:column;justify-content:space-between;padding:26px}.powerbi-cover .cover-top{color:#c5d4b7}.powerbi-cover .status{background:#3d3b20;color:#f3d66b;border-color:#6b6634}.pbi-wordmark{font-size:47px;line-height:1.1;letter-spacing:-.06em;margin-top:20px}.pbi-wordmark small{display:block;font-size:10px;line-height:1.6;letter-spacing:.09em;color:#b8c9aa;margin-bottom:9px;text-transform:uppercase}.pbi-cover-metrics{display:flex;gap:25px;margin-top:24px}.pbi-cover-metrics span{font-size:21px;color:#e9d382;letter-spacing:-.04em}.pbi-cover-metrics small{display:block;font-size:8px;letter-spacing:.05em;color:#b7c8aa;margin-top:4px}.powerbi-card .project-body{justify-content:center;padding:31px}.powerbi-card .project-body p{max-width:610px}.powerbi-card .project-kicker{color:var(--accent-ink)}.powerbi-card .card-action{margin-top:0}.pbi-example-note{font-size:10px;color:var(--muted);line-height:1.8;margin-top:14px}.nav{gap:18px}@media(max-width:720px){.powerbi-card{grid-template-columns:1fr}.powerbi-cover{min-height:255px}.powerbi-card .project-body{padding:25px}}
 
 .finflow-cover{background:#152e27}.finflow-cover .status{color:#d1e9a1;background:#2a4432;border-color:#52674a}.finflow-cover .pbi-wordmark{color:#e7f0d4}.finflow-path{display:flex;align-items:center;gap:9px;margin-top:24px}.finflow-path span{font-size:9px;border:1px solid #456044;padding:8px 10px;border-radius:5px;color:#cedebc}.finflow-path i{font-size:12px;font-style:normal;color:#91ad70}.finflow-actions{display:flex;flex-wrap:wrap;gap:14px 24px}.finflow-actions .text-link{font-size:11px}@media(max-width:560px){.finflow-path{gap:7px}.finflow-path span{font-size:8px;padding:7px}.finflow-cover .pbi-wordmark{font-size:46px}}
+/* A lighter, more spacious presentation for the portfolio. */
+@media screen {
+  :root{--bg:#fafbf8;--soft:#f1f4ed;--line:#e1e7dd;--accent-soft:#f0f5e9;--shadow:0 18px 55px #263a1d0b}
+  html[data-theme=dark]{--bg:#101612;--soft:#202a22;--line:#344033;--accent-soft:#26351f}
+  .hero-grid{grid-template-columns:1fr .92fr;gap:clamp(40px,7vw,105px)}
+  .hero-lead{font-size:16px;max-width:480px;line-height:1.85}
+  .intro-panel{padding:38px;background:var(--surface);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow)}
+  .intro-panel-top{display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .intro-panel-label,.profile-kicker{font-size:10px;letter-spacing:.15em;font-weight:700;color:var(--accent-ink)}
+  .intro-panel-mark{width:38px;height:38px;display:grid;place-items:center;border-radius:50%;background:var(--accent-soft);color:var(--accent-ink);font-size:19px}
+  .intro-panel-mark .icon{width:18px;height:18px}
+  .intro-panel h2{font-size:clamp(30px,3vw,42px);line-height:1.12;letter-spacing:-.05em;margin:28px 0 14px;font-weight:550}
+  .intro-panel h2 span{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--accent-ink)}
+  .intro-panel-lead{font-size:14px;line-height:1.7;color:var(--muted);max-width:350px}
+  .intro-panel-list{margin-top:30px;border-top:1px solid var(--line)}
+  .intro-panel-list>div{display:grid;grid-template-columns:34px 95px minmax(0,1fr);align-items:baseline;gap:10px;padding:15px 0;border-bottom:1px solid var(--line)}
+  .intro-panel-list>div>span{font-size:10px;color:var(--faint)}
+  .intro-panel-list strong{font-size:13px;color:var(--ink);font-weight:600}
+  .intro-panel-list small{font-size:12px;line-height:1.5;color:var(--muted)}
+  .project-card{box-shadow:0 8px 28px #263a1d06}
+  .project-body p,.small-card .project-body p{font-size:14px;line-height:1.75}
+  .section-heading>p{font-size:15px}
+  .profile-section{padding-block:94px;background:var(--soft)}
+  .profile-layout{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(40px,7vw,100px);align-items:start}
+  .profile-identity{align-items:center}
+  .profile-identity h2{font-size:27px;line-height:1.16}
+  .profile-identity p{font-size:12px;line-height:1.6}
+  .profile-story{border-left:1px solid var(--line);padding-left:clamp(32px,4vw,60px)}
+  .profile-story h3{margin:18px 0 22px;font-size:clamp(30px,3vw,42px);line-height:1.14;letter-spacing:-.045em;font-weight:550}
+  .profile-story h3 em{font-family:var(--serif);font-weight:400;color:var(--accent-ink)}
+  .profile-copy{font-size:15px;line-height:1.85;color:var(--muted);max-width:620px}
+  .profile-copy+.profile-copy{margin-top:14px}
+  .profile-buttons{margin-top:24px}
+  .profile-buttons .btn{font-size:11px}
+}
+@media screen and (max-width:900px){
+  .hero-grid{gap:32px}
+  .intro-panel{padding:28px}
+  .intro-panel-list>div{grid-template-columns:28px 85px minmax(0,1fr)}
+  .profile-layout{grid-template-columns:1fr;gap:30px}
+  .profile-story{border-left:0;border-top:1px solid var(--line);padding:30px 0 0}
+}
+@media screen and (max-width:720px){
+  .hero-grid{grid-template-columns:1fr;gap:30px}
+  .hero-lead{font-size:15px}
+  .intro-panel{padding:26px;max-width:540px;width:100%;margin:auto}
+  .intro-panel h2{font-size:32px}
+  .intro-panel-list>div{grid-template-columns:30px 90px minmax(0,1fr)}
+  .section-heading>p{font-size:14px}
+  .profile-section{padding-block:60px}
+  .profile-copy{font-size:15px}
+}
+@media screen and (max-width:400px){
+  .intro-panel-list>div{grid-template-columns:28px minmax(0,1fr);gap:3px 10px}
+  .intro-panel-list small{grid-column:2}
+  .profile-story h3{font-size:30px}
+}
 </style>
 </head>
 <body>
@@ -63,26 +120,23 @@ html[data-theme=dark]{color-scheme:dark;--bg:#101612;--surface:#18201a;--soft:#2
       <div class="hero-copy">
         <div class="hero-kicker"><span class="dot" aria-hidden="true"></span> PORTFÓLIO PROFISSIONAL <span class="mono">/ 2026</span></div>
         <h1 id="heroTitle">Software, dados<br>e <span class="serif">automação.</span></h1>
-        <p class="hero-lead">Sou <strong>Hugo Portugal Vasconcelos.</strong> Atuo em projetos independentes de desenvolvimento de software e análise de dados. Meu foco é integrar informações, automatizar rotinas e apoiar o acompanhamento de indicadores.</p>
+        <p class="hero-lead">Sou <strong>Hugo Portugal Vasconcelos.</strong> Uno engenharia, tecnologia e dados para transformar desafios em soluções práticas que ajudam pessoas e organizações.</p>
         <div class="hero-buttons">
           <a class="btn primary" href="#projetos">Explorar projetos <svg class="icon" aria-hidden="true"><use href="#i-arrow-down"></use></svg></a>
           <button class="btn secondary" type="button" data-demo="visao">Explorar SIGSST <svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right"></use></svg></button>
         </div>
-        <div class="hero-meta"><span>Projetos independentes desde março de 2026</span><span>Software · Dados · Automação</span></div>
+        <div class="hero-meta"><span>Engenharia · Tecnologia · Melhoria contínua</span></div>
       </div>
-      <div class="hero-visual" role="img" aria-label="Visão conceitual: dados de SQL, APIs e formulários passam por regras e automação para gerar relatórios e indicadores. Rastreabilidade e governança acompanham o fluxo.">
-        <div class="visual-head"><span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span><span>DA ENTRADA À DECISÃO</span><span class="visual-tag">VISÃO CONCEITUAL</span></div>
-        <div class="system-map" aria-hidden="true">
-          <div class="map-label"><span>01 / CONECTAR</span><span>dados de entrada</span></div>
-          <div class="input-row"><div class="input-item"><svg class="icon" aria-hidden="true"><use href="#i-database"></use></svg> SQL</div><div class="input-item"><svg class="icon" aria-hidden="true"><use href="#i-code"></use></svg> APIs</div><div class="input-item"><svg class="icon" aria-hidden="true"><use href="#i-form"></use></svg> Formulários</div></div>
-          <div class="map-connect"></div>
-          <div class="processing-node"><div class="node-mark"><svg class="icon" aria-hidden="true"><use href="#i-workflow"></use></svg></div><div><strong>Regras e automação</strong><small>Validar · Organizar · Processar</small></div><span class="node-dots"><i></i><i></i><i></i></span></div>
-          <div class="map-output-line"></div>
-          <div class="output-row"><div class="output-item"><svg class="icon" aria-hidden="true"><use href="#i-document"></use></svg> Relatórios</div><div class="output-item"><svg class="icon" aria-hidden="true"><use href="#i-chart"></use></svg> Indicadores</div></div>
+      <aside class="intro-panel" aria-labelledby="introPanelTitle">
+        <div class="intro-panel-top"><span class="intro-panel-label">O QUE ME MOVE</span><span class="intro-panel-mark" aria-hidden="true"><svg class="icon"><use href="#i-arrow-up-right"></use></svg></span></div>
+        <h2 id="introPanelTitle">Conectar ideias.<br><span>Construir soluções.</span></h2>
+        <p class="intro-panel-lead">Um olhar integrado para transformar necessidades em possibilidades.</p>
+        <div class="intro-panel-list">
+          <div><span>01</span><strong>Software</strong><small>Soluções para necessidades reais</small></div>
+          <div><span>02</span><strong>Dados</strong><small>Informações para decisões mais claras</small></div>
+          <div><span>03</span><strong>Processos</strong><small>Melhoria contínua e automação</small></div>
         </div>
-        <div class="visual-footer"><span><svg class="icon" aria-hidden="true"><use href="#i-shield"></use></svg> RASTREABILIDADE</span><span><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg> GOVERNANÇA</span><span class="mono">DADOS → CLAREZA</span></div>
-        <span class="visual-caption">Visão integrada de dados, sistemas e processos.</span>
-      </div>
+      </aside>
     </div>
     <div class="container"><div class="expertise-band"><span class="label">FRENTES DE ATUAÇÃO</span><div class="expertise-tags"><span><svg class="icon" aria-hidden="true"><use href="#i-code"></use></svg> Desenvolvimento</span><span><svg class="icon" aria-hidden="true"><use href="#i-database"></use></svg> Análise de dados</span><span><svg class="icon" aria-hidden="true"><use href="#i-workflow"></use></svg> Automação</span><span><svg class="icon" aria-hidden="true"><use href="#i-layers"></use></svg> Sistemas de gestão</span></div><a class="band-arrow" href="#projetos" aria-label="Ir para os projetos"><svg class="icon" aria-hidden="true"><use href="#i-arrow-down"></use></svg></a></div></div>
   </section>
@@ -205,7 +259,22 @@ html[data-theme=dark]{color-scheme:dark;--bg:#101612;--surface:#18201a;--soft:#2
 
   <section class="section" id="competencias" aria-labelledby="skillsTitle"><div class="container"><div class="eyebrow"><span class="index">05 /</span> COMPETÊNCIAS</div><div class="section-heading"><h2 class="section-title" id="skillsTitle">Conhecimento técnico.<br>Visão de <span class="serif">processos.</span></h2><p>Desenvolvimento de software, análise de dados e automação aplicados à estruturação de soluções e processos.</p></div><div class="skills-grid"><article class="skill-item"><div class="skill-head"><span>01 / CONSTRUIR</span><svg class="icon" aria-hidden="true"><use href="#i-code"></use></svg></div><h3>Desenvolvimento<br>de software</h3><p>Aplicações corporativas, integrações e consumo de APIs para conectar sistemas e regras de negócio.</p><div class="skill-tags">C# · PYTHON · APIs</div></article><article class="skill-item"><div class="skill-head"><span>02 / INTERPRETAR</span><svg class="icon" aria-hidden="true"><use href="#i-database"></use></svg></div><h3>Dados e<br>relatórios</h3><p>Consultas SQL, extração e cruzamento de informações, dashboards e relatórios gerenciais. O projeto Atlas BI detalha o uso de Power Query, modelo em estrela e DAX.</p><div class="skill-tags">SQL · POWER BI · DAX · INDICADORES</div></article><article class="skill-item"><div class="skill-head"><span>03 / SIMPLIFICAR</span><svg class="icon" aria-hidden="true"><use href="#i-workflow"></use></svg></div><h3>Processos e<br>automação</h3><p>Consolidação de dados, automação de rotinas e geração assíncrona de relatórios.</p><div class="skill-tags">AUTOMAÇÃO · CONSOLIDAÇÃO</div></article><article class="skill-item"><div class="skill-head"><span>04 / ESTRUTURAR</span><svg class="icon" aria-hidden="true"><use href="#i-shield"></use></svg></div><h3>Arquitetura de<br>soluções</h3><p>Rastreabilidade, proteção de dados e modelagem de processos como diretrizes do estudo SIGB.</p><div class="skill-tags">ARQUITETURA PROPOSTA · BPMN · LGPD</div></article></div><p class="skill-context">O SIGB é um estudo de requisitos e arquitetura. O SIGSST é um protótipo com dados fictícios; as tecnologias previstas para sua evolução estão identificadas como propostas.</p></div></section>
 
-  <section class="profile-section" id="contato" aria-labelledby="profileTitle"><div class="container profile-layout"><div><div class="eyebrow"><span class="index">06 /</span> PERFIL PROFISSIONAL</div><div class="profile-identity"><span class="profile-monogram" aria-hidden="true">hp.</span><div><h2 id="profileTitle">Hugo Portugal<br>Vasconcelos</h2><p>Desenvolvimento de software · Análise de dados · Automação</p></div></div><div class="contact-links" id="contactLinks" hidden></div></div><div><p class="profile-copy">Minha atuação em projetos independentes reúne desenvolvimento de software, análise de dados e automação. Neste portfólio, apresento soluções para consolidar arquivos, acompanhar indicadores, analisar movimento em vídeo, explorar transferências financeiras e estruturar processos de gestão.</p><div class="profile-buttons"><button class="btn primary" id="copySummary" type="button">Copiar apresentação profissional <svg class="icon" aria-hidden="true"><use href="#i-copy"></use></svg></button><button class="btn secondary" id="printPortfolio" type="button">Imprimir ou salvar em PDF <svg class="icon" aria-hidden="true"><use href="#i-print"></use></svg></button></div></div></div></section>
+  <section class="profile-section" id="contato" aria-labelledby="profileTitle">
+    <div class="container profile-layout">
+      <div class="profile-intro">
+        <div class="eyebrow"><span class="index">06 /</span> PERFIL PROFISSIONAL</div>
+        <div class="profile-identity"><span class="profile-monogram" aria-hidden="true">hp.</span><div><h2 id="profileTitle">Hugo Portugal<br>Vasconcelos</h2><p>Engenharia · Tecnologia · Dados</p></div></div>
+        <div class="contact-links" id="contactLinks" hidden></div>
+      </div>
+      <div class="profile-story" aria-labelledby="profileStoryTitle">
+        <p class="profile-kicker">UMA TRAJETÓRIA EM EVOLUÇÃO</p>
+        <h3 id="profileStoryTitle">Aprender, construir<br><em>e evoluir.</em></h3>
+        <p class="profile-copy">Sou engenheiro metalúrgico, com pós-graduação em Engenharia de Software e Sistemas. Minha trajetória passa por ambientes industriais e pela área de tecnologia, unindo raciocínio analítico, visão de processos e vontade de aprender.</p>
+        <p class="profile-copy">Hoje, desenvolvo projetos independentes de software, dados e automação. Acredito que cada desafio é uma oportunidade de evoluir e criar soluções que simplifiquem o trabalho, apoiem boas decisões e façam a diferença.</p>
+        <div class="profile-buttons"><button class="btn secondary" id="printPortfolio" type="button">Imprimir ou salvar em PDF <svg class="icon" aria-hidden="true"><use href="#i-print"></use></svg></button></div>
+      </div>
+    </div>
+  </section>
 </main>
 <footer class="footer"><div class="container footer-inner"><span>© 2026 Hugo Portugal Vasconcelos · Software, Dados e Processos</span><a href="#inicio">Voltar ao início <svg class="icon" aria-hidden="true"><use href="#i-arrow-up"></use></svg></a></div></footer>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -487,20 +556,6 @@ html[data-theme=dark]{color-scheme:dark;--bg:#101612;--surface:#18201a;--soft:#2
     } catch (e) { toast('Não foi possível preparar o arquivo. Tente abrir o portfólio em outro navegador.'); }
   }));
 
-  const professionalSummary = 'Hugo Portugal Vasconcelos — atuação em projetos independentes de desenvolvimento de software, análise de dados e automação, com conhecimentos em C#, Python, SQL e integração de APIs. O portfólio reúne estudos de arquitetura, os projetos FinFlow (.NET e mensageria), Power BI Atlas BI e demonstrações de consolidação de CSV, indicadores operacionais, análise de movimento em vídeo e gestão de saúde e segurança com dados simulados.';
-  $('#copySummary').addEventListener('click', async () => {
-    let copied = false;
-    try { await navigator.clipboard.writeText(professionalSummary); copied = true; }
-    catch (e) {
-      const text = document.createElement('textarea'); text.value = professionalSummary;
-      text.setAttribute('aria-label', 'Apresentação profissional');
-      text.style.cssText = 'position:fixed;top:0;left:0;opacity:0';
-      document.body.append(text); text.select();
-      try { copied = document.execCommand('copy'); } catch (error) {}
-      text.remove(); $('#copySummary').focus({ preventScroll: true });
-    }
-    toast(copied ? 'Apresentação profissional copiada.' : 'O navegador não permitiu copiar. Selecione o texto do perfil para copiar.');
-  });
   $('#printPortfolio').addEventListener('click', () => window.print());
 
   // Contatos opcionais. A ausência de dados não gera links vazios ou fictícios.
