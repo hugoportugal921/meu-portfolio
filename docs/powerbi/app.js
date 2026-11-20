@@ -152,7 +152,7 @@ $('#exportCsv').addEventListener('click',()=>{
 });
 
 try {
-  const response=await fetch('data.json');if(!response.ok)throw new Error('Não foi possível carregar a base.');data=await response.json();
+  const response=await fetch('data.json?v=revisao-20261120');if(!response.ok)throw new Error('Não foi possível carregar a base.');data=await response.json();
   units=new Map(data.units.map(row=>[row.UnidadeID,row]));products=new Map(data.products.map(row=>[row.ProdutoID,row]));channels=new Map(data.channels.map(row=>[row.CanalID,row]));
   function option(select,value,label){const el=document.createElement('option');el.value=value;el.textContent=label;$(select).append(el);}
   data.months.forEach(month=>option('#period','month:'+month,new Date(month+'-15T12:00:00').toLocaleDateString('pt-BR',{month:'long',year:'numeric'})));
@@ -164,5 +164,5 @@ try {
   for(const[id,key]of[['#qSource','linhasOriginais'],['#qDuplicates','duplicadosRemovidos'],['#qInvalid','invalidosRemovidos'],['#qClean','linhasFinais']])$(id).textContent=nf.format(data.quality[key]);
   render();
 } catch(error) {
-  $('#filterContext').textContent='A prévia não pôde carregar a base. Recarregue a página ou baixe o pacote Power BI.';toast('Não foi possível carregar a demonstração.');console.error(error);
+  $('#filterContext').textContent='Não foi possível carregar a base da prévia. Recarregue a página.';toast('Não foi possível carregar a demonstração.');console.error(error);
 }

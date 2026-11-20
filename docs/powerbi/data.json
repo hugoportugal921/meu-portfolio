@@ -58538,7 +58538,7 @@
       "name": "Variação Anual %",
       "dax": "VAR Anterior = [Receita Ano Anterior]\nRETURN IF(NOT ISBLANK(Anterior), DIVIDE([Receita Líquida] - Anterior, Anterior))",
       "format": "percentual",
-      "description": "Comparação com ano anterior no mesmo contexto."
+      "description": "Comparação com o ano anterior no mesmo contexto."
     },
     {
       "name": "Receita YTD",

@@ -13,14 +13,14 @@ export function mount(container, store) {
     <header class="page-intro">
       <p class="eyebrow">PROJETO 01 / AUTOMAÇÃO OPERACIONAL</p>
       <h1 class="section-title">Do dado bruto<br>ao relatório.</h1>
-      <p class="muted">Importe registros, consolide informações e gere relatórios em segundo plano. O processamento acontece em um Web Worker, mantendo a navegação disponível.</p>
+      <p class="muted">Importe CSV e gere relatórios em segundo plano com Web Worker.</p>
     </header>
     <div class="notice" id="op-source"></div>
     <div class="metric-grid" id="op-metrics"></div>
     <div class="split-grid">
       <section class="panel">
         <div class="panel-header"><div><p class="eyebrow">01 / ENTRADA</p><h2>Consolidar registros</h2></div><span class="badge">CSV</span></div>
-        <div class="op-dropzone" id="op-dropzone" role="button" tabindex="0" aria-label="Selecionar arquivo CSV ou arraste o arquivo até esta área" style="padding:32px 20px;border:1px dashed var(--border,#3b4655);border-radius:12px;text-align:center;cursor:pointer;margin:20px 0">
+        <div class="op-dropzone" id="op-dropzone" role="button" tabindex="0" aria-label="Selecionar um arquivo CSV ou arrastá-lo para esta área" style="padding:32px 20px;border:1px dashed var(--border,#3b4655);border-radius:12px;text-align:center;cursor:pointer;margin:20px 0">
           <span aria-hidden="true" style="font-size:28px">↥</span><p><strong>Arraste seu CSV para cá</strong></p><p class="muted">ou clique para selecionar · até 10 MB</p>
         </div>
         <input id="op-file" type="file" accept=".csv,text/csv" hidden>
@@ -33,7 +33,7 @@ export function mount(container, store) {
       </section>
       <section class="panel">
         <div class="panel-header"><div><p class="eyebrow">02 / PROCESSAMENTO</p><h2>Central de relatórios</h2></div><span class="badge">ASSÍNCRONO</span></div>
-        <p class="muted">Um resumo por unidade com volume, situação, valor total e duração média dos registros da base atual.</p>
+        <p class="muted">Resumo por unidade, com volume, situação, valor e duração média.</p>
         <button class="button primary" id="op-report" style="margin:16px 0">Gerar relatório consolidado <span aria-hidden="true">↗</span></button>
         <div id="op-jobs" aria-live="polite"></div>
       </section>
@@ -42,7 +42,7 @@ export function mount(container, store) {
       <div class="panel-header"><div><p class="eyebrow">03 / BASE CONSOLIDADA</p><h2>Últimos registros</h2></div><span class="badge" id="op-row-count"></span></div>
       <div class="table-wrap" id="op-table"></div>
     </section>
-    <p class="muted" style="font-size:12px;margin-top:18px">Demonstração funcional de processamento local. As tarefas desta sessão são encerradas quando você sai desta tela; os dados continuam disponíveis neste projeto até recarregar a página.</p>`;
+    <p class="muted" style="font-size:12px;margin-top:18px">Processamento local: as tarefas terminam ao sair; os dados permanecem até recarregar a página.</p>`;
   const find = selector => container.querySelector(selector);
   const setImporting = value => {
     importing = value;

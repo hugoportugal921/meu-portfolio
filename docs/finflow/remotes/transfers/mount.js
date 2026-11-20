@@ -10614,7 +10614,8 @@ function cy({ client: M }) {
           ] }),
           /* @__PURE__ */ A.jsxs("span", { children: [
             Ul.length,
-            " registro(s)"
+            " ",
+            Ul.length === 1 ? "registro" : "registros"
           ] })
         ] }),
         /* @__PURE__ */ A.jsx("div", { className: "table-scroll", children: /* @__PURE__ */ A.jsxs("table", { children: [

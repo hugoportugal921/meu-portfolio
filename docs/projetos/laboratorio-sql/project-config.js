@@ -3,7 +3,6 @@ export default {
   "title": "Laboratório SQL",
   "subtitle": "Modelagem relacional e consultas avançadas",
   "module": "sql",
-  "moduleURL": "./modules/sql.js",
-  "portfolioURL": "../../",
-  "repositoryURL": "https://github.com/hugoportugal921/laboratorio-sql"
+  "moduleURL": "./modules/sql.js?v=revisao-20261120",
+  "portfolioURL": "../../"
 };

@@ -3,7 +3,6 @@ export default {
   "title": "Dashboard operacional",
   "subtitle": "Indicadores, filtros e acompanhamento da operação",
   "module": "dashboard",
-  "moduleURL": "./modules/dashboard.js",
-  "portfolioURL": "../../",
-  "repositoryURL": "https://github.com/hugoportugal921/dashboard-operacional"
+  "moduleURL": "./modules/dashboard.js?v=revisao-20261120",
+  "portfolioURL": "../../"
 };

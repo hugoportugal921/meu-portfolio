@@ -10533,7 +10533,8 @@ function a1({ client: D }) {
         /* @__PURE__ */ p.jsx("strong", { children: vi(yl) }),
         /* @__PURE__ */ p.jsxs("small", { children: [
           o.length,
-          " transferência(s) concluída(s)"
+          " ",
+          o.length === 1 ? "transferência concluída" : "transferências concluídas"
         ] })
       ] }),
       /* @__PURE__ */ p.jsxs("article", { className: "metric", children: [

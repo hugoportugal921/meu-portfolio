@@ -49,7 +49,7 @@ export function mount(container, store) {
     <div class="page-intro">
       <span class="eyebrow">PROJETO 02 · VISÃO COMPUTACIONAL</span>
       <h1 class="section-title">O movimento vira um evento.</h1>
-      <p class="muted">Compare imagens consecutivas e acompanhe movimento dentro de uma área restrita. Use a cena de exemplo, uma câmera ou um vídeo do seu computador.</p>
+      <p class="muted">Detecte movimento em uma área selecionada usando cena de exemplo, câmera ou vídeo local.</p>
     </div>
 
     <div class="notice">Esta demonstração analisa diferenças entre pixels. Ela detecta movimento na região marcada; não reconhece pessoas, equipamentos ou EPIs.</div>
@@ -64,13 +64,13 @@ export function mount(container, store) {
           <select data-role="source"><option value="scene">Cena animada de exemplo</option><option value="camera">Câmera do dispositivo</option><option value="video">Vídeo local</option></select>
         </label>
         <label class="field" data-role="file-field" hidden><span class="field-label">Selecione um vídeo</span><input data-role="file" type="file" accept="video/*"><span class="muted" data-role="file-name">O arquivo é processado neste navegador, sem envio.</span></label>
-        <div class="field" data-role="source-note"><span class="field-label">Sobre esta fonte</span><span class="muted" data-role="source-description">Cena gerada por desenho. Os quadros simulados são analisados de verdade.</span></div>
+        <div class="field" data-role="source-note"><span class="field-label">Sobre esta fonte</span><span class="muted" data-role="source-description">Cena simulada com análise dos quadros no navegador.</span></div>
       </div>
 
       <div style="position:relative;border-radius:16px;overflow:hidden;background:#071c25">
         <canvas data-role="canvas" width="960" height="540" aria-label="Monitor de movimento. A área restrita é marcada por um retângulo." aria-describedby="vision-roi-help" style="display:block;width:100%;height:auto;aspect-ratio:16/9;touch-action:none;cursor:crosshair"></canvas>
       </div>
-      <p class="muted" id="vision-roi-help" style="margin:10px 0 18px">Arraste sobre a imagem ou use os campos abaixo para definir a área restrita. X e Y partem do canto superior esquerdo. <button class="button ghost" data-role="roi-reset" type="button">Restaurar área</button></p>
+      <p class="muted" id="vision-roi-help" style="margin:10px 0 18px">Defina a área arrastando sobre a imagem ou preenchendo os campos. X e Y partem do canto superior esquerdo. <button class="button ghost" data-role="roi-reset" type="button">Restaurar área</button></p>
       <fieldset class="vision-roi-controls"><legend class="field-label" style="margin-bottom:12px">Área restrita em porcentagem da imagem</legend><div class="vision-roi-grid">
         <label class="field"><span class="field-label">Posição X (%)</span><input data-role="roi-x" type="number" min="0" max="96" step="0.1" value="57"></label>
         <label class="field"><span class="field-label">Posição Y (%)</span><input data-role="roi-y" type="number" min="0" max="96" step="0.1" value="22"></label>
@@ -96,7 +96,7 @@ export function mount(container, store) {
 
     <section class="panel" style="margin-top:20px">
       <div class="panel-header"><div><span class="eyebrow">RASTREABILIDADE</span><h2>Registro de eventos</h2></div><button class="button ghost" data-role="clear" type="button">Limpar eventos</button></div>
-      <p class="muted">Um evento por episódio de movimento. Um novo alerta é liberado após um segundo sem movimento. São exibidos os 50 eventos mais recentes.</p>
+      <p class="muted">Um evento por movimento; o alerta reinicia após um segundo sem movimento. Exibe até 50 eventos.</p>
       <div class="table-wrap"><table style="width:100%"><thead><tr><th scope="col">Horário</th><th scope="col">Fonte</th><th scope="col">Pixels alterados</th></tr></thead><tbody data-role="events"><tr><td colspan="3" class="empty">Nenhum evento registrado. Inicie a análise para acompanhar.</td></tr></tbody></table></div>
     </section>
 
@@ -426,7 +426,7 @@ export function mount(container, store) {
     el('file-field').hidden = selected !== 'video';
     el('source-note').hidden = selected === 'video';
     el('source-badge').textContent = sourceName();
-    el('source-description').textContent = selected === 'camera' ? 'A câmera será solicitada somente ao clicar em iniciar. Imagens processadas no dispositivo.' : 'Cena gerada por desenho. Os quadros simulados são analisados de verdade.';
+    el('source-description').textContent = selected === 'camera' ? 'A câmera será solicitada somente ao clicar em iniciar. Imagens processadas no dispositivo.' : 'Cena simulada com análise dos quadros no navegador.';
     if (selected === 'scene') drawScene();
     else {
       sourceCtx.fillStyle = '#071c25'; sourceCtx.fillRect(0, 0, canvas.width, canvas.height);
