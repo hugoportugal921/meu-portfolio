@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Demonstrações de gestão, análise de dados e não conformidades de Hugo Portugal.">
+  <title>Gestão, dados e melhoria | Hugo Portugal</title>
+  <link rel="stylesheet" href="gestao.css">
+  <script src="dados-exemplo.js" defer></script>
+  <script src="gestao.js" defer></script>
+</head>
+<body>
+  <header class="top"><div class="shell top-inner">
+    <a class="brand" href="../#inicio"><span>hp.</span><strong>Hugo Portugal</strong></a>
+    <a class="back" href="../#projetos">Voltar ao portfólio</a>
+  </div></header>
+  <main class="shell">
+    <section class="hero">
+      <div><span class="eyebrow">PROJETOS DE GESTÃO E ANÁLISE</span><h1>Dados que ajudam a <em>acompanhar ações.</em></h1>
+      <p>Três estudos conectam controle de processos, tratamento de dados e melhoria contínua. Explore os cadastros e indicadores com exemplos fictícios.</p></div>
+      <div class="hero-note"><strong>Demonstração web</strong><p>Feita em HTML, CSS e JavaScript. Não está conectada ao Power Apps, Power BI ou Microsoft 365.</p><p>Cadastros ficam neste navegador. Use apenas dados de exemplo.</p></div>
+    </section>
+    <nav class="tabs" aria-label="Projetos de gestão">
+      <a href="#processos" data-tab="processos">Gestão e indicadores</a>
+      <a href="#relatorios" data-tab="relatorios">Relatórios e dados</a>
+      <a href="#qualidade" data-tab="qualidade">Não conformidades</a>
+    </nav>
+
+    <section data-view="processos" id="processos" class="view">
+      <div class="view-heading"><div><span class="eyebrow">PROJETO 01 · GESTÃO DE PROCESSOS</span><h2>Gestão e indicadores</h2><p>Registre atividades e acompanhe o que está aberto, concluído e fora do prazo.</p></div><span class="badge">Dados fictícios</span></div>
+      <div id="taskStats" class="stats" aria-label="Indicadores de atividades"></div>
+      <div class="grid">
+        <div class="panel"><div class="panel-head"><div><h3>Atividades cadastradas</h3><p id="taskCount"></p></div><label class="filter">Situação <select id="taskFilter"><option value="Todas">Todas</option><option>Aberta</option><option>Em andamento</option><option>Concluída</option></select></label></div>
+          <div class="table-wrap"><table><thead><tr><th>Atividade</th><th>Área</th><th>Responsável</th><th>Prazo</th><th>Situação</th><th>Ação</th></tr></thead><tbody id="taskTable"></tbody></table></div>
+        </div>
+        <div class="panel"><h3>Nova atividade</h3><p>O cadastro atualiza os indicadores nesta demonstração.</p>
+          <form id="taskForm" class="form">
+            <label>Atividade<input name="atividade" maxlength="120" required></label>
+            <label>Área<select name="area" required><option>Operações</option><option>Qualidade</option><option>Planejamento</option><option>Suprimentos</option></select></label>
+            <label>Responsável<input name="responsavel" maxlength="80" required></label>
+            <label>Prazo<input name="prazo" type="date" required></label>
+            <label>Situação<select name="situacao"><option>Aberta</option><option>Em andamento</option></select></label>
+            <button class="primary" type="submit">Cadastrar atividade</button>
+          </form><p class="feedback" id="taskFeedback" role="status"></p>
+        </div>
+      </div>
+      <details class="explain"><summary>Sobre o projeto e os indicadores</summary><p><strong>Problema:</strong> atividades dispersas dificultam o acompanhamento. <strong>Abordagem:</strong> cadastro simples, prazos e indicadores calculados sobre os registros locais.</p><p><strong>Regras:</strong> atrasada é a atividade não concluída com prazo anterior ao dia atual; a conclusão no prazo considera atividades concluídas com data de conclusão e prazo preenchidos.</p><p><strong>Possível evolução:</strong> recriar o cadastro no Power Apps, armazenar os dados em Microsoft Lists/SharePoint e construir um relatório no Power BI. Essas integrações não foram implementadas aqui.</p></details>
+    </section>
+
+    <section data-view="relatorios" id="relatorios" class="view" hidden>
+      <div class="view-heading"><div><span class="eyebrow">PROJETO 02 · QUALIDADE DOS DADOS</span><h2>Relatórios e análise de dados</h2><p>Importe um arquivo CSV ou use o exemplo e confira o resultado da limpeza.</p></div><span class="badge">Processamento local</span></div>
+      <div class="notice"><strong>Como experimentar:</strong> a base de exemplo contém 26 linhas: 24 válidas, uma duplicada e uma incompleta. A planilha também pode ser aberta no Excel; para importá-la aqui, salve a aba Dados como CSV UTF-8.</div>
+      <div class="actions"><button class="secondary" type="button" id="useSample">Usar CSV de exemplo</button><button class="secondary" type="button" id="useTasks">Usar atividades cadastradas</button><label class="upload">Importar CSV<input type="file" id="csvFile" accept=".csv,text/csv"></label><a class="outline" href="Base_Atividades_Demonstrativa.xlsx">Abrir planilha de exemplo</a><a class="outline" href="atividades_exemplo.csv">Abrir CSV de exemplo</a></div>
+      <p class="feedback" id="reportMessage" role="status"></p><p class="source" id="reportSource"></p>
+      <div id="reportStats" class="stats" aria-label="Qualidade da base importada"></div>
+      <div class="grid report-grid"><div class="panel"><h3>Distribuição por área</h3><p>Contagem após a validação e remoção de duplicidades.</p><div id="areaBars"></div></div>
+      <div class="panel"><h3>Regras de validação</h3><ul><li>Identificação, atividade, área, responsável e prazo preenchidos.</li><li>Datas válidas em AAAA-MM-DD ou DD/MM/AAAA.</li><li>Uma linha por ID; a primeira linha válida é preservada.</li><li>Atividades concluídas precisam de data de conclusão.</li></ul><p>Os dados importados são tratados no navegador, sem envio ao servidor.</p></div></div>
+      <div class="panel"><h3>Prévia da base válida</h3><div class="table-wrap"><table><thead><tr><th>ID</th><th>Atividade</th><th>Área</th><th>Responsável</th><th>Situação</th><th>Prazo</th></tr></thead><tbody id="reportTable"></tbody></table></div></div>
+      <details class="explain"><summary>Sobre o projeto e sua evolução</summary><p><strong>Problema:</strong> linhas incompletas ou repetidas prejudicam relatórios. <strong>Abordagem:</strong> importar CSV, validar campos, separar duplicidades e resumir registros válidos.</p><p>A planilha de exemplo contém uma tabela e uma coluna de auditoria. No Power Query e no Power BI, o fluxo pode ser recriado com fontes compartilhadas e relatórios atualizáveis. O painel acima é JavaScript, não Power BI.</p></details>
+    </section>
+
+    <section data-view="qualidade" id="qualidade" class="view" hidden>
+      <div class="view-heading"><div><span class="eyebrow">PROJETO 03 · MELHORIA CONTÍNUA</span><h2>Não conformidades e 5W2H</h2><p>Registre um desvio, planeje a ação e acompanhe a situação e a criticidade.</p></div><span class="badge">Dados fictícios</span></div>
+      <div id="ncStats" class="stats" aria-label="Indicadores de não conformidades"></div>
+      <div class="grid">
+        <div class="panel"><div class="panel-head"><div><h3>Planos de ação</h3><p>Abra um registro para consultar o 5W2H.</p></div><label class="filter">Situação <select id="ncFilter"><option>Todas</option><option>Aberta</option><option>Concluída</option></select></label></div><div id="ncList" class="nc-list"></div></div>
+        <div class="panel"><h3>Registrar não conformidade</h3><p>Preencha os campos do plano de ação.</p>
+          <form id="ncForm" class="form">
+            <label>Desvio identificado<input name="titulo" maxlength="120" required></label>
+            <label>Área<input name="area" maxlength="60" required></label>
+            <label>Criticidade<select name="criticidade"><option>Baixa</option><option>Média</option><option>Alta</option></select></label>
+            <label>O que será feito? (What)<input name="what" maxlength="160" required></label>
+            <label>Por quê? (Why)<input name="why" maxlength="160" required></label>
+            <label>Onde? (Where)<input name="where" maxlength="100" required></label>
+            <label>Quando? (When)<input name="when" type="date" required></label>
+            <label>Quem? (Who)<input name="who" maxlength="80" required></label>
+            <label>Como? (How)<textarea name="how" maxlength="250" required></textarea></label>
+            <label>Quanto? (How much)<input name="howmuch" maxlength="80" placeholder="Ex.: R$ 200 ou sem custo" required></label>
+            <button class="primary" type="submit">Registrar plano</button>
+          </form><p class="feedback" id="ncFeedback" role="status"></p>
+        </div>
+      </div>
+      <details class="explain"><summary>Sobre o projeto e o método 5W2H</summary><p><strong>Problema:</strong> desvios sem responsável ou prazo dificultam a melhoria. <strong>Abordagem:</strong> registrar cada desvio e seu plano, com os sete campos 5W2H.</p><p><strong>Indicadores:</strong> total, ações abertas, concluídas e abertas com prazo vencido. Esses resultados são calculados somente sobre os exemplos locais.</p><p><strong>Possível evolução:</strong> recriar os formulários no Power Apps, usar uma lista do SharePoint e configurar lembretes no Power Automate. Não há fluxo de e-mail nesta demonstração.</p></details>
+    </section>
+    <div class="end-note"><span>Projetos independentes · exemplos fictícios</span><button id="resetExample" type="button" class="text-button">Restaurar dados de exemplo</button></div>
+  </main>
+  <footer><div class="shell">Hugo Portugal · Engenharia, dados e tecnologia</div></footer>
+</body>
+</html>
